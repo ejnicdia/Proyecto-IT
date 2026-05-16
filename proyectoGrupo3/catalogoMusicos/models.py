@@ -2,6 +2,23 @@ from django.conf import settings
 from django.db import models
 from django.utils import timezone
 
+
+class Banda(models.Model):
+    nombre = models.CharField(max_length=250)
+
+    class Genero(models.TextChoices):
+        ROCK = 'R', 'Rock'
+        POP = 'P', 'Pop'
+
+    genero = models.CharField(
+        max_length=1,
+        choices=Genero.choices,
+        default=Genero.ROCK
+    )
+    
+    fecha_creacion = models.DateField()
+
+
 class Usuario(models.Model):
     username = models.CharField(max_length=250)
     email = models.EmailField(unique=True)
