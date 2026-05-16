@@ -12,11 +12,17 @@ class Reporte(models.Model):
     descripcion_error = models.TextField(max_length=250)
     fecha_creacion = models.DateTimeField(default=timezone.now)
 
+    # Relaciones 
+    usuario = models.ForeignKey(
+        Usuario,
+        on_delete=models.CASCADE,
+        related_name='Reportes'
+    )
+
     def __str__(self):
         return self.titulo
     
 class Musico(Usuario):
-    
     instrumento = models.CharField(max_length=100)
     bio = models.TextField(max_length=250)
     fecha_inicio_estudio = models.DateField(auto_now=True)
@@ -29,6 +35,13 @@ class Evento(models.Model):
     fecha_actualizacion = models.DateTimeField(auto_now=True)
     ubicacion = models.CharField(max_length=250)
     # atributo de ubicacion como enlace a google maps
+
+    # Relaciones
+    usuario = models.ForeignKey(
+        Usuario,
+        on_delete=models.CASCADE,
+        related_name='Eventos'
+    )
 
 class Banda(models.Model):
     nombre = models.CharField(max_length=250)
@@ -56,9 +69,14 @@ class Anuncio(models.Model):
 
     # Relaciones
     banda = models.ForeignKey(
-        settings.AUTH_USER_MODEL,
+        Banda,
         on_delete=models.CASCADE,
-        related_name='articulos_blog'
+        related_name='Anuncios'
+    )
+    usuario = models.ForeignKey(
+        Usuario,
+        on_delete=models.CASCADE,
+        related_name='Anuncios'
     )
     
 """
