@@ -5,21 +5,6 @@ from django.utils import timezone
 class Usuario(models.Model):
     username = models.CharField(max_length=250)
     email = models.EmailField(unique=True)
-
-class Banda(models.Model):
-    nombre = models.CharField(max_length=250)
-
-    class Genero(models.TextChoices):
-        ROCK = 'R', 'Rock'
-        POP = 'P', 'Pop'
-
-    genero = models.CharField(
-        max_length=1,
-        choices=Genero.choices,
-        default=Genero.ROCK
-    )
-    
-    fecha_creacion = models.DateField()
     
 class Reporte(models.Model):
     
@@ -29,12 +14,6 @@ class Reporte(models.Model):
 
     def __str__(self):
         return self.titulo
-
-class Anuncio(models.Model):
-    titulo = models.CharField(max_length=250)
-    descripcion = models.CharField(max_length=250)
-    pago = models.FloatField()
-    fecha_creacion = models.DateField(default=timezone.now)
     
 class Musico(Usuario):
     
@@ -50,6 +29,37 @@ class Evento(models.Model):
     fecha_actualizacion = models.DateTimeField(auto_now=True)
     ubicacion = models.CharField(max_length=250)
     # atributo de ubicacion como enlace a google maps
+
+class Banda(models.Model):
+    nombre = models.CharField(max_length=250)
+
+    class Genero(models.TextChoices):
+        ROCK = 'R', 'Rock'
+        POP = 'P', 'Pop'
+
+    genero = models.CharField(
+        max_length=1,
+        choices=Genero.choices,
+        default=Genero.ROCK
+    )
+    fecha_creacion = models.DateField()
+
+    # Relaciones
+    eventos = models.ManyToManyField(Evento)
+    musicos = models.ManyToManyField(Musico)
+
+class Anuncio(models.Model):
+    titulo = models.CharField(max_length=250)
+    descripcion = models.CharField(max_length=250)
+    pago = models.FloatField()
+    fecha_creacion = models.DateField(default=timezone.now)
+
+    # Relaciones
+    banda = models.ForeignKey(
+        settings.AUTH_USER_MODEL,
+        on_delete=models.CASCADE,
+        related_name='articulos_blog'
+    )
     
 """
 class Articulo(models.Model):
