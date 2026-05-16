@@ -1,0 +1,44 @@
+classDiagram
+    class User {
+        <<Django Built-in>>
+        +String username
+        +String email
+    }
+    class ProfileMusico {
+        +String instrumento
+        +String bio
+        +date fecha_inicio_estudio
+    }
+    class Banda {
+        +String nombre
+        +String genero
+        +date fecha_creacion
+    }
+    class Evento {
+        +String titulo
+        +DateTime fecha_y_hora
+        +String ubicacion
+        +int duracion_aproximada
+        +date fecha_creacion
+        +String descripcion
+    }
+    class Anuncio {
+        +String titulo
+        +String descripcion
+        +Float pago
+        +date fecha_creacion
+    }
+    class Reporte {
+        +String titulo
+        +String descripcion_error
+        +DateTime fecha_creacion
+    }
+
+    User "1" -- "0..1" ProfileMusico : es_perfil
+    User "1" -- "0..*" Evento : organiza
+    User "1" -- "0..*" Anuncio : publica
+    User "1" -- "0..*" Reporte : redacta
+    
+    ProfileMusico "0..*" -- "0..*" Banda : pertenece
+    Evento "0..*" -- "1..*" Banda : cartelera
+    Anuncio "0..*" -- "0..1" Banda : aplica_a
