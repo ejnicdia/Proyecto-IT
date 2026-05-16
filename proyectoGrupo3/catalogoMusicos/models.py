@@ -3,7 +3,8 @@ from django.db import models
 from django.utils import timezone
 
 class Usuario(models.Model):
-    nombre = models.CharField(max_length=250)
+    username = models.CharField(max_length=250)
+    email = models.EmailField(unique=True)
 
 """
 class Articulo(models.Model):
