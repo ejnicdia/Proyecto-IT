@@ -38,9 +38,9 @@ class Evento(models.Model):
 
     # Relaciones
     usuario = models.ForeignKey(
-        Usuario,
+        settings.AUTH_USER_MODEL,
         on_delete=models.CASCADE,
-        related_name='Eventos'
+        related_name='eventos_usuario'
     )
 
 class Banda(models.Model):
