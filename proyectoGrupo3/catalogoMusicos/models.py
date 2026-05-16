@@ -41,6 +41,15 @@ class Musico(Usuario):
     instrumento = models.CharField(max_length=100)
     bio = models.TextField(max_length=250)
     fecha_inicio_estudio = models.DateField(auto_now=True)
+
+class Evento(models.Model):
+    titulo = models.CharField(max_length=250)
+    descripcion = models.TextField()
+    fecha_evento = models.DateTimeField()
+    fecha_creacion = models.DateTimeField(auto_now_add=True)
+    fecha_actualizacion = models.DateTimeField(auto_now=True)
+    ubicacion = models.CharField(max_length=250)
+    # atributo de ubicacion como enlace a google maps
     
 """
 class Articulo(models.Model):
