@@ -1,0 +1,31 @@
+<!doctype html>
+
+<html>
+	<head>
+		<title>{% block titulo %}Catalogo de Músicos{% endblock %}</title>
+		<style>
+			body {
+				font-family: sans-serif;
+				margin: 2rem;
+			}
+			h1,
+			h2 {
+				color: #2c3e50;
+			}
+
+			.fecha {
+				color: #7f8c8d;
+				font-size: 0.9em;
+			}
+
+			.paginacion {
+				margin-top: 20px;
+				font-weight: bold;
+			}
+		</style>
+	</head>
+
+	<body>
+		<div id="content">{% block contenido %} {% endblock %}</div>
+	</body>
+</html>

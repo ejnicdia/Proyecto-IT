@@ -4,7 +4,8 @@ from .models import Musico, Usuario, Banda, Anuncio, Reporte, Evento
 # Create your views here.
 
 def listar_musicos(request):
-    return None
+    musicos = Musico.objects.all()
+    return render(request, 'catalogoMusicos/Musicos/lista.html', {'musicos': musicos})
 
 def listar_usuarios(request):
     return None

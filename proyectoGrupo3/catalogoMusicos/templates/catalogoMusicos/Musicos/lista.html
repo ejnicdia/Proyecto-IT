@@ -1,0 +1,13 @@
+{% extends "catalogoMusicos/base.html" %}
+
+{% block titulo %}Mi Catálogo de Músicos - Músicos{% endblock %}
+
+{% block contenido %}
+    <h1>Mis Músicos</h1>
+    {% for musico in musicos %}
+        <h2>
+            {{ musico.id }} - {{ musico.usuario.username }} - {{ musico.instrumento }}
+        </h2>
+        {{ musico.bio|truncatewords:30|linebreaks }}
+    {% endfor %}
+{% endblock %}
