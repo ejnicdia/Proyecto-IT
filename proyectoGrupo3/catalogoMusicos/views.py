@@ -19,13 +19,22 @@ def listar_bandas(request):
         {'bandas': bandas})
 
 def listar_anuncios(request):
-    return None
+    anuncios = Anuncio.objects.all()
+    return render(request,
+        'catalogoMusicos/anuncios/lista.html',
+        {'anuncios': anuncios})
 
 def listar_reportes(request):
-    return None
+    reportes = Reporte.objects.all()
+    return render(request,
+        'catalogoMusicos/reportes/lista.html',
+        {'reportes': reportes})
 
 def listar_eventos(request):
-    return None
+    eventos = Evento.objects.all()
+    return render(request,
+        'catalogoMusicos/eventos/lista.html',
+        {'eventos': eventos})
 
 """
 def lista_articulos(request):
