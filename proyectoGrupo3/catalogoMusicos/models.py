@@ -6,6 +6,12 @@ from taggit.managers import TaggableManager
 class Usuario(models.Model):
     username = models.CharField(max_length=250)
     email = models.EmailField(unique=True)
+
+    # Relaciones
+    # Musico
+    # Evento
+    # Anuncio
+    # Reporte
     
 class Reporte(models.Model):
     
@@ -27,12 +33,14 @@ class Musico(Usuario):
     instrumento = models.CharField(max_length=100)
     bio = models.TextField(max_length=250)
     fecha_inicio_estudio = models.DateField(auto_now=True)
+
     # Relaciones
     usuario = models.OneToOneField(
         settings.AUTH_USER_MODEL,
         on_delete=models.CASCADE,
         related_name='musico_perfil'
     )
+    # Banda
 
 class Evento(models.Model):
     titulo = models.CharField(max_length=250)
@@ -49,11 +57,12 @@ class Evento(models.Model):
         on_delete=models.CASCADE,
         related_name='eventos_usuario'
     )
+    # Banda
 
 class Banda(models.Model):
     nombre = models.CharField(max_length=250)
     tags = TaggableManager()
-    
+
     # Template TAG
     """
     class Genero(models.TextChoices):
@@ -71,6 +80,7 @@ class Banda(models.Model):
     # Relaciones
     eventos = models.ManyToManyField(Evento)
     musicos = models.ManyToManyField(Musico)
+    # Anuncio
 
 class Anuncio(models.Model):
     titulo = models.CharField(max_length=250)
@@ -79,11 +89,7 @@ class Anuncio(models.Model):
     fecha_creacion = models.DateField(default=timezone.now)
 
     # Relaciones
-    banda = models.ForeignKey(
-        Banda,
-        on_delete=models.CASCADE,
-        related_name='Anuncios'
-    )
+    bandas = models.ManyToManyField(Banda)
     usuario = models.ForeignKey(
         Usuario,
         on_delete=models.CASCADE,
