@@ -7,7 +7,10 @@ def listar_musicos(request):
     return None
 
 def listar_usuarios(request):
-    return None
+    usuarios = Usuario.objects.all()
+    return render(request, 
+                  'blog/articulo/lista_usuarios.html', 
+                  {'usuarios', usuarios})
 
 def listar_bandas(request):
     return None
