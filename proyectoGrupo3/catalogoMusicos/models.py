@@ -1,6 +1,7 @@
 from django.conf import settings
 from django.db import models
 from django.utils import timezone
+from taggit.managers import TaggableManager
 
 class Usuario(models.Model):
     username = models.CharField(max_length=250)
@@ -45,7 +46,8 @@ class Evento(models.Model):
 
 class Banda(models.Model):
     nombre = models.CharField(max_length=250)
-
+    tags = TaggableManager()
+    
     # Template TAG
     """
     class Genero(models.TextChoices):
