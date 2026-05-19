@@ -9,7 +9,7 @@ def listar_musicos(request):
 def listar_usuarios(request):
     usuarios = Usuario.objects.all()
     return render(request, 
-                  'blog/articulo/lista_usuarios.html', 
+                  'catalogo_musicos/usuario/lista.html', 
                   {'usuarios', usuarios})
 
 def listar_bandas(request):
