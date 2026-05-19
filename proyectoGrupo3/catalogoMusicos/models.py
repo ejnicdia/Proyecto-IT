@@ -2,21 +2,9 @@ from django.conf import settings
 from django.db import models
 from django.utils import timezone
 from taggit.managers import TaggableManager
-
-"""
-class Usuario(models.Model):
-    username = models.CharField(max_length=250)
-    email = models.EmailField(unique=True)
-
-    # Relaciones
-    # Musico
-    # Evento
-    # Anuncio
-    # Reporte
-"""
+from django.contrib.auth.models import User
 
 class Reporte(models.Model):
-    
     titulo = models.CharField(max_length=250)
     descripcion_error = models.TextField(max_length=250)
     fecha_creacion = models.DateTimeField(default=timezone.now)
@@ -31,17 +19,19 @@ class Reporte(models.Model):
     def __str__(self):
         return self.titulo
     
-class Musico(models.Model):
+class Musico(User):
     instrumento = models.CharField(max_length=100)
     bio = models.TextField(max_length=250)
     fecha_inicio_estudio = models.DateField(auto_now=True)
 
     # Relaciones
+    """
     usuario = models.OneToOneField(
         settings.AUTH_USER_MODEL,
         on_delete=models.CASCADE,
         related_name='musico_perfil'
     )
+    """
     # Banda
 
 class Evento(models.Model):
