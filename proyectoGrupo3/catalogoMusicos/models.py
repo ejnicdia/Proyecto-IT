@@ -52,6 +52,8 @@ class Evento(models.Model):
 class Banda(models.Model):
     nombre = models.CharField(max_length=250)
 
+    # Template TAG
+    """
     class Genero(models.TextChoices):
         ROCK = 'R', 'Rock'
         POP = 'P', 'Pop'
@@ -61,6 +63,7 @@ class Banda(models.Model):
         choices=Genero.choices,
         default=Genero.ROCK
     )
+    """
     fecha_creacion = models.DateField()
 
     # Relaciones
