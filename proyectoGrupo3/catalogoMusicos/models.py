@@ -27,6 +27,12 @@ class Musico(Usuario):
     instrumento = models.CharField(max_length=100)
     bio = models.TextField(max_length=250)
     fecha_inicio_estudio = models.DateField(auto_now=True)
+    # Relaciones
+    usuario = models.OneToOneField(
+        settings.AUTH_USER_MODEL,
+        on_delete=models.CASCADE,
+        related_name='musico_perfil'
+    )
 
 class Evento(models.Model):
     titulo = models.CharField(max_length=250)
