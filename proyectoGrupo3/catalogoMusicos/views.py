@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 from .models import Musico, Usuario, Banda, Anuncio, Reporte, Evento
 
 # Create your views here.
@@ -35,6 +35,9 @@ def listar_eventos(request):
     return render(request,
         'catalogoMusicos/eventos/lista.html',
         {'eventos': eventos})
+
+
+
 
 """
 def lista_articulos(request):
