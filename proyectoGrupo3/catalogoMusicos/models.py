@@ -3,6 +3,7 @@ from django.db import models
 from django.utils import timezone
 from taggit.managers import TaggableManager
 
+"""
 class Usuario(models.Model):
     username = models.CharField(max_length=250)
     email = models.EmailField(unique=True)
@@ -12,7 +13,8 @@ class Usuario(models.Model):
     # Evento
     # Anuncio
     # Reporte
-    
+"""
+
 class Reporte(models.Model):
     
     titulo = models.CharField(max_length=250)
@@ -21,7 +23,7 @@ class Reporte(models.Model):
 
     # Relaciones 
     usuario = models.ForeignKey(
-        Usuario,
+        settings.AUTH_USER_MODEL,
         on_delete=models.CASCADE,
         related_name='Reportes'
     )
@@ -29,7 +31,7 @@ class Reporte(models.Model):
     def __str__(self):
         return self.titulo
     
-class Musico(Usuario):
+class Musico(settings.AUTH_USER_MODEL):
     instrumento = models.CharField(max_length=100)
     bio = models.TextField(max_length=250)
     fecha_inicio_estudio = models.DateField(auto_now=True)
@@ -61,20 +63,7 @@ class Evento(models.Model):
 
 class Banda(models.Model):
     nombre = models.CharField(max_length=250)
-    tags = TaggableManager()
-
-    # Template TAG
-    """
-    class Genero(models.TextChoices):
-        ROCK = 'R', 'Rock'
-        POP = 'P', 'Pop'
-
-    genero = models.CharField(
-        max_length=1,
-        choices=Genero.choices,
-        default=Genero.ROCK
-    )
-    """
+    generos_tags = TaggableManager() # Generos
     fecha_creacion = models.DateField()
 
     # Relaciones
@@ -91,7 +80,7 @@ class Anuncio(models.Model):
     # Relaciones
     bandas = models.ManyToManyField(Banda)
     usuario = models.ForeignKey(
-        Usuario,
+        settings.AUTH_USER_MODEL,
         on_delete=models.CASCADE,
         related_name='Anuncios'
     )
