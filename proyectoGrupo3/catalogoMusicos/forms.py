@@ -5,32 +5,32 @@ from models import *
 
 # UsuarioForm, MusicoForm, BandaForm, AnuncioForm, ReporteForm, EventoForm
 
-class UsuarioForm(form.ModelForm):
+class UsuarioForm(forms.ModelForm):
     class Meta:
         model = get_user_model
         fields = []
 
-class MusicoForm(form.ModelForm):
+class MusicoForm(forms.ModelForm):
     class Meta:
         model = Musico
         fields = []
 
-class BandaForm(form.ModelForm):
+class BandaForm(forms.ModelForm):
     class Meta:
         model = Banda
         fields = []
 
-class AnuncioForm(form.ModelForm):
+class AnuncioForm(forms.ModelForm):
     class Meta:
         model = Anuncio
         fields = []
 
-class ReporteForm(form.ModelForm):
+class ReporteForm(forms.ModelForm):
     class Meta:
         model = Reporte
         fields = []
 
-class EventoForm(form.ModelForm):
+class EventoForm(forms.ModelForm):
     class Meta:
         model = Evento
         fields = []
