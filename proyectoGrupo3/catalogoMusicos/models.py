@@ -31,7 +31,7 @@ class Reporte(models.Model):
     def __str__(self):
         return self.titulo
     
-class Musico(settings.AUTH_USER_MODEL):
+class Musico(models.Model):
     instrumento = models.CharField(max_length=100)
     bio = models.TextField(max_length=250)
     fecha_inicio_estudio = models.DateField(auto_now=True)
