@@ -13,7 +13,10 @@ def listar_usuarios(request):
                   {'usuarios', usuarios})
 
 def listar_bandas(request):
-    return None
+    bandas = Banda.objects.all()
+    return render(request,
+        'catalogoMusicos/bandas/lista.html',
+        {'bandas': bandas})
 
 def listar_anuncios(request):
     return None
