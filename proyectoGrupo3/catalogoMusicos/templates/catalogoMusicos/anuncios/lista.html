@@ -1,0 +1,17 @@
+﻿{% extends "catalogoMusicos/base.html" %}
+
+{% block titulo %}Mi Catalogo de Musicos - Anuncios{% endblock %}
+
+{% block contenido %}
+    <h1>Mis Anuncios</h1>
+    {% for anuncio in anuncios %}
+        <h2>
+            {{ anuncio.id }} - {{ anuncio.titulo }} - {{ anuncio.pago }}
+        </h2>
+        <p>{{ anuncio.descripcion|truncatewords:30 }}</p>
+        <p class="fecha">Creado: {{ anuncio.fecha_creacion }}</p>
+        <p>Publicado por: {{ anuncio.usuario.username }}</p>
+    {% empty %}
+        <p>No hay anuncios disponibles.</p>
+    {% endfor %}
+{% endblock %}

@@ -1,0 +1,17 @@
+﻿{% extends "catalogoMusicos/base.html" %}
+
+{% block titulo %}Mi Catalogo de Musicos - Reportes{% endblock %}
+
+{% block contenido %}
+    <h1>Mis Reportes</h1>
+    {% for reporte in reportes %}
+        <h2>
+            {{ reporte.id }} - {{ reporte.titulo }}
+        </h2>
+        {{ reporte.descripcion_error|truncatewords:30|linebreaks }}
+        <p class="fecha">Creado: {{ reporte.fecha_creacion }}</p>
+        <p>Usuario: {{ reporte.usuario.username }}</p>
+    {% empty %}
+        <p>No hay reportes disponibles.</p>
+    {% endfor %}
+{% endblock %}

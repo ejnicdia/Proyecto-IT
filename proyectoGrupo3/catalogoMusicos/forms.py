@@ -1,13 +1,12 @@
 from django import forms
-from .models import Comentario
 from django.contrib.auth import get_user_model
-from models import *
+from .models import Musico, Banda, Anuncio, Reporte, Evento
 
 # UsuarioForm, MusicoForm, BandaForm, AnuncioForm, ReporteForm, EventoForm
 
 class UsuarioForm(forms.ModelForm):
     class Meta:
-        model = get_user_model
+        model = get_user_model()
         fields = []
 
 class MusicoForm(forms.ModelForm):

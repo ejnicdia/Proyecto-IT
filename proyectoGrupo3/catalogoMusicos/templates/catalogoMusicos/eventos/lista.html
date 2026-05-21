@@ -1,0 +1,18 @@
+﻿{% extends "catalogoMusicos/base.html" %}
+
+{% block titulo %}Mi Catalogo de Musicos - Eventos{% endblock %}
+
+{% block contenido %}
+    <h1>Mis Eventos</h1>
+    {% for evento in eventos %}
+        <h2>
+            {{ evento.id }} - {{ evento.titulo }}
+        </h2>
+        <p>{{ evento.descripcion|truncatewords:30 }}</p>
+        <p>Ubicacion: {{ evento.ubicacion }}</p>
+        <p class="fecha">Fecha del evento: {{ evento.fecha_evento }}</p>
+        <p>Creado por: {{ evento.usuario.username }}</p>
+    {% empty %}
+        <p>No hay eventos disponibles.</p>
+    {% endfor %}
+{% endblock %}
