@@ -6,7 +6,7 @@
     <h1>Mis Anuncios</h1>
     {% for anuncio in anuncios %}
         <h2>
-            {{ anuncio.id }} - {{ anuncio.titulo }} - {{ anuncio.pago }}
+            <a href="{% url 'catalogoMusicos:detalle_anuncio' anuncio.id %}"> {{ anuncio.titulo }} - {{ anuncio.pago }}</a>
         </h2>
         <p>{{ anuncio.descripcion|truncatewords:30 }}</p>
         <p class="fecha">Creado: {{ anuncio.fecha_creacion }}</p>

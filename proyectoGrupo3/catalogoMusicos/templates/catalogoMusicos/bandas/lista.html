@@ -6,7 +6,7 @@
     <h1>Mis Bandas</h1>
     {% for banda in bandas %}
         <h2>
-            {{ banda.id }} - {{ banda.nombre }}
+            <a href="{% url 'catalogoMusicos:detalle_banda' banda.id %}"> {{ banda.nombre }}</a>
         </h2>
         <p class="fecha">Creada: {{ banda.fecha_creacion }}</p>
         <p>Musicos registrados: {{ banda.musicos.count }}</p>

@@ -1,0 +1,13 @@
+﻿{% extends "catalogoMusicos/base.html" %}
+
+{% block titulo %}Detalle de Reporte{% endblock %}
+
+{% block contenido %}
+    <h1>Detalle del Reporte</h1>
+    <h2>{{ reporte.id }} - {{ reporte.titulo }}</h2>
+    <p><strong>Descripcion del error:</strong></p>
+    {{ reporte.descripcion_error|linebreaks }}
+    <p class="fecha"><strong>Fecha de creacion:</strong> {{ reporte.fecha_creacion }}</p>
+    <p><strong>Usuario:</strong> {{ reporte.usuario.username }}</p>
+    <p><a href="{% url 'catalogoMusicos:listar_reportes' %}">Volver al listado de reportes</a></p>
+{% endblock %}

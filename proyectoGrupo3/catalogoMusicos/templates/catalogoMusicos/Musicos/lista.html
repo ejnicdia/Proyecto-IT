@@ -1,13 +1,15 @@
-{% extends "catalogoMusicos/base.html" %}
+﻿{% extends "catalogoMusicos/base.html" %}
 
-{% block titulo %}Mi Catálogo de Músicos - Músicos{% endblock %}
+{% block titulo %}Mi Catalogo de Musicos - Musicos{% endblock %}
 
 {% block contenido %}
-    <h1>Mis Músicos</h1>
+    <h1>Mis Musicos</h1>
     {% for musico in musicos %}
         <h2>
-            {{ musico.id }} - {{ musico.usuario.username }} - {{ musico.instrumento }}
+            <a href="{% url 'catalogoMusicos:detalle_musico' musico.id %}"> {{ musico.username }} toca {{ musico.instrumento }}</a>
         </h2>
         {{ musico.bio|truncatewords:30|linebreaks }}
+    {% empty %}
+        <p>No hay musicos disponibles.</p>
     {% endfor %}
 {% endblock %}

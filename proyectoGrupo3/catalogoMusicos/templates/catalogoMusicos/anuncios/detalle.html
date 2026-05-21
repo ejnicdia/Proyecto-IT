@@ -1,0 +1,21 @@
+﻿{% extends "catalogoMusicos/base.html" %}
+
+{% block titulo %}Detalle de Anuncio{% endblock %}
+
+{% block contenido %}
+    <h1>Detalle del Anuncio</h1>
+    <h2>{{ anuncio.id }} - {{ anuncio.titulo }}</h2>
+    <p><strong>Descripcion:</strong> {{ anuncio.descripcion }}</p>
+    <p><strong>Pago:</strong> {{ anuncio.pago }}</p>
+    <p class="fecha"><strong>Fecha de creacion:</strong> {{ anuncio.fecha_creacion }}</p>
+    <p><strong>Publicado por:</strong> {{ anuncio.usuario.username }}</p>
+
+    <h3>Bandas asociadas</h3>
+    {% for banda in anuncio.bandas.all %}
+        <p>{{ banda.nombre }}</p>
+    {% empty %}
+        <p>Sin bandas asociadas.</p>
+    {% endfor %}
+
+    <p><a href="{% url 'catalogoMusicos:listar_anuncios' %}">Volver al listado de anuncios</a></p>
+{% endblock %}

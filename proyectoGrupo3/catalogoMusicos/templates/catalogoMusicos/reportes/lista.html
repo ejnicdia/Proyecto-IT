@@ -6,7 +6,7 @@
     <h1>Mis Reportes</h1>
     {% for reporte in reportes %}
         <h2>
-            {{ reporte.id }} - {{ reporte.titulo }}
+            <a href="{% url 'catalogoMusicos:detalle_reporte' reporte.id %}"> {{ reporte.titulo }}</a>
         </h2>
         {{ reporte.descripcion_error|truncatewords:30|linebreaks }}
         <p class="fecha">Creado: {{ reporte.fecha_creacion }}</p>

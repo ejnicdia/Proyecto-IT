@@ -6,7 +6,7 @@
     <h1>Mis Eventos</h1>
     {% for evento in eventos %}
         <h2>
-            {{ evento.id }} - {{ evento.titulo }}
+            <a href="{% url 'catalogoMusicos:detalle_evento' evento.id %}"> {{ evento.titulo }}</a>
         </h2>
         <p>{{ evento.descripcion|truncatewords:30 }}</p>
         <p>Ubicacion: {{ evento.ubicacion }}</p>

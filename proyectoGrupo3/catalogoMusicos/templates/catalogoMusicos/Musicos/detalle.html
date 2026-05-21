@@ -1,0 +1,14 @@
+﻿{% extends "catalogoMusicos/base.html" %}
+
+{% block titulo %}Detalle de Musico{% endblock %}
+
+{% block contenido %}
+    <h1>Detalle del Musico</h1>
+    <h2>{{ musico.id }} - {{ musico.username }}</h2>
+    <p><strong>Nombre:</strong> {{ musico.first_name }} {{ musico.last_name }}</p>
+    <p><strong>Email:</strong> {{ musico.email }}</p>
+    <p><strong>Instrumento:</strong> {{ musico.instrumento }}</p>
+    {{ musico.bio|linebreaks }}
+    <p class="fecha"><strong>Inicio de estudio:</strong> {{ musico.fecha_inicio_estudio }}</p>
+    <p><a href="{% url 'catalogoMusicos:listar_musicos' %}">Volver al listado de musicos</a></p>
+{% endblock %}

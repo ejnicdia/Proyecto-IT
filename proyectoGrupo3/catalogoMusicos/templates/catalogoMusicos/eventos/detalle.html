@@ -1,0 +1,15 @@
+﻿{% extends "catalogoMusicos/base.html" %}
+
+{% block titulo %}Detalle de Evento{% endblock %}
+
+{% block contenido %}
+    <h1>Detalle del Evento</h1>
+    <h2>{{ evento.id }} - {{ evento.titulo }}</h2>
+    <p><strong>Descripcion:</strong> {{ evento.descripcion|linebreaks }}</p>
+    <p><strong>Ubicacion:</strong> {{ evento.ubicacion }}</p>
+    <p class="fecha"><strong>Fecha del evento:</strong> {{ evento.fecha_evento }}</p>
+    <p class="fecha"><strong>Creado:</strong> {{ evento.fecha_creacion }}</p>
+    <p class="fecha"><strong>Actualizado:</strong> {{ evento.fecha_actualizacion }}</p>
+    <p><strong>Creado por:</strong> {{ evento.usuario.username }}</p>
+    <p><a href="{% url 'catalogoMusicos:listar_eventos' %}">Volver al listado de eventos</a></p>
+{% endblock %}

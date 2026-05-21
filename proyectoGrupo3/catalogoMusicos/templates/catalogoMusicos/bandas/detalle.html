@@ -1,0 +1,26 @@
+﻿{% extends "catalogoMusicos/base.html" %}
+
+{% block titulo %}Detalle de Banda{% endblock %}
+
+{% block contenido %}
+    <h1>Detalle de la Banda</h1>
+    <h2>{{ banda.id }} - {{ banda.nombre }}</h2>
+    <p class="fecha"><strong>Fecha de creacion:</strong> {{ banda.fecha_creacion }}</p>
+    <p><strong>Generos:</strong> {{ banda.generos_tags.all|join:", "|default:"Sin generos" }}</p>
+
+    <h3>Musicos</h3>
+    {% for musico in banda.musicos.all %}
+        <p>{{ musico.username }} - {{ musico.instrumento }}</p>
+    {% empty %}
+        <p>Sin musicos asociados.</p>
+    {% endfor %}
+
+    <h3>Eventos</h3>
+    {% for evento in banda.eventos.all %}
+        <p>{{ evento.titulo }} - {{ evento.fecha_evento }} - {{ evento.ubicacion }}</p>
+    {% empty %}
+        <p>Sin eventos asociados.</p>
+    {% endfor %}
+
+    <p><a href="{% url 'catalogoMusicos:listar_bandas' %}">Volver al listado de bandas</a></p>
+{% endblock %}
