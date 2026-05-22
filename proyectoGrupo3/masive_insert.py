@@ -37,8 +37,9 @@ else:
 
     # 2. Bucle para crear 15 músicos
     for i in range(1, 16):
-        nombre_usuario = f"musico_{i}"
-        email = f"musico{i}@example.com"
+        j = i + 1
+        nombre_usuario = f"musico_{j}"
+        email = f"musico{j}@example.com"
         instrumento = random.choice(INSTRUMENTOS)
         bio = random.choice(BIOGRAFIAS)
         
@@ -52,7 +53,8 @@ else:
             instrumento=instrumento,
             bio=bio,
             fecha_inicio_estudio=fecha_inicio,
-            usuario=usuario
+            #user_ptr_id=usuario.id
+            user_ptr_id= j
         )
         print(f" -> Creado: {nombre_usuario} - Instrumento: {instrumento}")
     
