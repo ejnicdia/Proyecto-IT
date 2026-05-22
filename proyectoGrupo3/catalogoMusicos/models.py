@@ -22,7 +22,7 @@ class Reporte(models.Model):
 class Musico(User):
     instrumento = models.CharField(max_length=100)
     bio = models.TextField(max_length=250)
-    fecha_inicio_estudio = models.DateField(auto_now=True)
+    fecha_inicio_estudio = models.DateField()
 
     # Relaciones
     """
