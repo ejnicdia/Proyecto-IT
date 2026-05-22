@@ -31,6 +31,7 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    'catalogoMusicos',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -38,7 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'taggit',
-    'catalogoMusicos',
+    
 ]
 
 MIDDLEWARE = [
@@ -122,3 +123,9 @@ STATIC_URL = 'static/'
 # https://docs.djangoproject.com/en/5.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+# URL a la que redirigir si el usuario no está identificado (@login_required)
+LOGIN_URL = 'catalogoMusicos:login'
+# URLs a las que redirigir después de hacer login o logout con éxito
+LOGIN_REDIRECT_URL = 'catalogoMusicos:home'
+LOGOUT_REDIRECT_URL = 'catalogoMusicos:logout'
