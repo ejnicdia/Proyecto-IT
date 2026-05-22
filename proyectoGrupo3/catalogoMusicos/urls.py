@@ -6,7 +6,7 @@ app_name = 'catalogoMusicos'
 
 urlpatterns = [
     path('cuenta/', include('django.contrib.auth.urls')),
-    path('home/', views.mostrar_home, name='home'),
+    path('', views.mostrar_home, name='home'),
 
     # Ruta para el listado (ej: /catalogoMusicos/listar)
     path('musicos/', views.listar_musicos, name='listar_musicos'),
