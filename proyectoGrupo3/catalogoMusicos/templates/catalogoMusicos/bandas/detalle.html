@@ -16,11 +16,13 @@
     {% endfor %}
 
     <h3>Eventos</h3>
-    {% for evento in banda.eventos.all %}
-        <p>{{ evento.titulo }} - {{ evento.fecha_evento }} - {{ evento.ubicacion }}</p>
-    {% empty %}
-        <p>Sin eventos asociados.</p>
-    {% endfor %}
+    <ul>
+        {% for evento in banda.eventos.all %}
+            <li><a href="{% url 'catalogoMusicos:detalle_evento' evento.id %}"> {{ evento.titulo }}</a> - {{ evento.fecha_evento }} - {{ evento.ubicacion }}</li>
+        {% empty %}
+            <span>Sin eventos asociados.</span>
+        {% endfor %}
+    </ul>
 
     <p><a href="{% url 'catalogoMusicos:listar_bandas' %}">Volver al listado de bandas</a></p>
 {% endblock %}
