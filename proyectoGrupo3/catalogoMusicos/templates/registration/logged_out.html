@@ -1,0 +1,7 @@
+{% extends "catalogoMusicos/base.html" %}
+{% block titulo %}Sesión cerrada{% endblock %}
+
+{% block contenido %}
+    <h1>Sesión cerrada</h1>
+    <p>Sesión cerrada correctamente. Accede de nuevo <a href="{% url 'catalogoMusicos:login' %}">aquí</a>.</p>
+{% endblock %}

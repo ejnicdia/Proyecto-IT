@@ -1,0 +1,20 @@
+{% extends "catalogoMusicos/base.html" %}
+{% block titulo %}Iniciar Sesión{% endblock %}
+
+{% block contenido %}
+    <h1>Iniciar Sesión</h1>
+    {% if form.errors %}
+        <p>Los datos introducidos no coinciden. Inténtalo de nuevo.</p>
+    {% else %}
+        <p>Por favor, utiliza el siguiente formulario para acceder:</p>
+    {% endif %}
+    <div class="login-form">
+        <form method="post">
+            {{ form.as_p }}
+            {% csrf_token %}
+            {# El campo hidden 'next' redirige a la página que se intentaba ver antes de loguearse #}
+            <input type="hidden" name="next" value="{{ next }}" />
+            <p><input type="submit" value="Acceder"></p>
+        </form>
+    </div>
+{% endblock %}

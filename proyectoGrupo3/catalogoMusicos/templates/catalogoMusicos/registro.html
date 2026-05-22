@@ -1,0 +1,11 @@
+{% extends "catalogoMusicos/base.html" %}
+{% block titulo %}Crear una cuenta{% endblock %}
+{% block contenido %}
+<h1>Crear una cuenta</h1>
+<p>Por favor, regístrate usando el siguiente formulario:</p>
+<form method="post">
+{{ form_registro.as_p }}
+{% csrf_token %}
+<p><input type="submit" value="Crear mi cuenta"></p>
+</form>
+{% endblock %}
