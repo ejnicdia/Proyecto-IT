@@ -26,6 +26,20 @@
 	</head>
 
 	<nav>
+		<a href="{% url 'catalogoMusicos:home' %}">Inicio</a>
+		|
+		{% if request.user.is_authenticated %}
+			<span>Hola, {{ request.user.username }}.</span>
+			<form action="{% url 'catalogoMusicos:logout' %}" method="post">
+				{% csrf_token %}
+				<button type="submit">Cerrar Sesión</button>
+			</form>
+		{% else %}
+			<a href="{% url 'catalogoMusicos:login' %}">Iniciar Sesión</a>
+			|
+			<a href="{% url 'catalogoMusicos:registro' %}">Registrarse</a>
+		{% endif %}
+		<br>
 		<a href="{% url 'catalogoMusicos:listar_anuncios' %}">Listado de anuncios</a>
 		|
 		<a href="{% url 'catalogoMusicos:listar_bandas' %}">Listado de bandas</a>

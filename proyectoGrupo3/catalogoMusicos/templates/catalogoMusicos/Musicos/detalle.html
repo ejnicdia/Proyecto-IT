@@ -5,7 +5,7 @@
 {% block contenido %}
     <h1>Detalle del Musico</h1>
     <h2>{{ musico.id }} - {{ musico.username }}</h2>
-    <p><strong>Nombre:</strong> {{ musico.first_name }} {{ musico.last_name }}</p>
+    <p><strong>Nombre:</strong> {{ musico.username }} {{ musico.last_name }}</p>
     <p><strong>Email:</strong> {{ musico.email }}</p>
     <p><strong>Instrumento:</strong> {{ musico.instrumento }}</p>
     {{ musico.bio|linebreaks }}
