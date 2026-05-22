@@ -4,35 +4,27 @@ from .models import Musico, Banda, Anuncio, Reporte, Evento
 
 # UsuarioForm, MusicoForm, BandaForm, AnuncioForm, ReporteForm, EventoForm
 
-class UsuarioForm(forms.ModelForm):
-    class Meta:
-        model = get_user_model()
-        fields = []
-
-class MusicoForm(forms.ModelForm):
-    class Meta:
-        model = Musico
-        fields = []
 
 class BandaForm(forms.ModelForm):
     class Meta:
         model = Banda
-        fields = []
+        fields = ['nombre', 'generos_tags', 'fecha_creacion'] # Relaciones como MUSICOS se pondrian en el form????
 
 class AnuncioForm(forms.ModelForm):
     class Meta:
         model = Anuncio
-        fields = []
+        fields = ['titulo', 'descripcion', 'pago'] # En la vista se une con el usuario que lo crea
 
 class ReporteForm(forms.ModelForm):
     class Meta:
         model = Reporte
-        fields = []
-
+        fields = ['titulo', 'descripcion_error'] # En la vista se une con el usuario que lo crea
 class EventoForm(forms.ModelForm):
     class Meta:
         model = Evento
-        fields = []
+        fields = ['titulo', 'descripcion', 'fecha_evento', 'ubicacion'] # La BANDA tambien habria que ponerlo aqui, 
+                                                                        # pero tiene que poderse poner solo las bandas 
+                                                                        # a las que pertenezca el usuario
 
 class FormularioRegistro(forms.ModelForm):
     # Aunque ya está en el modelo, hay que indicarle que es un PasswordInput o lo renderizará como texto
