@@ -25,6 +25,18 @@
 		</style>
 	</head>
 
+	<nav>
+		<a href="{% url 'catalogoMusicos:listar_anuncios' %}">Listado de anuncios</a>
+		|
+		<a href="{% url 'catalogoMusicos:listar_bandas' %}">Listado de bandas</a>
+		|
+		<a href="{% url 'catalogoMusicos:listar_eventos' %}">Listado de eventos</a>
+		|
+		<a href="{% url 'catalogoMusicos:listar_musicos' %}">Listado de musicos</a>
+		|
+		<a href="{% url 'catalogoMusicos:listar_reportes' %}">Listado de reportes</a>
+	</nav>
+
 	<body>
 		<div id="content">{% block contenido %} {% endblock %}</div>
 	</body>
