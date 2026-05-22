@@ -57,6 +57,30 @@ class FormularioRegistro(forms.ModelForm):
             raise forms.ValidationError("Las contraseñas no coinciden.")
         # Si las contraseñas coinciden se devuelve ya validada para que Django siga su proceso normal
         return cd['password2']
+    
+class FormularioRegistroMusico(forms.ModelForm):
+    # Aunque ya está en el modelo, hay que indicarle que es un PasswordInput o lo renderizará como texto
+    password = forms.CharField(label='Contraseña', widget=forms.PasswordInput) # widget para que no se vea la contraseña.
+    # Este otro campo será para validar que la contraseña está bien escrita
+    password2 = forms.CharField(label='Repetir contraseña', widget=forms.PasswordInput)
+
+    # Campos que se recuperan del modelo User de Django
+    class Meta:
+        # Coge el que haya por defecto en el sistema. Por si quieres hacer un tipo de usuario tuyo personalizado.
+        model = Musico
+        fields = ['username', 'last_name', 'email', 'instrumento', 'bio', 'fecha_inicio_estudio']
+        help_texts = {'username': None} # Oculta el texto de ayuda predeterminado de este campo
+
+    def clean_password2(self):
+        # self.cleaned_data es un diccionario de Django que contiene todos los datos
+        # que se han introducido y que ya han pasado la validación básica
+        cd = self.cleaned_data
+        if cd['password'] != cd['password2']:
+            # Si los campos de contraseña difieren, se lanza un ValidationError que Django captura
+            # automáticamente e implica mostrar ese mensaje de texto en rojo junto al campo en el HTML
+            raise forms.ValidationError("Las contraseñas no coinciden.")
+        # Si las contraseñas coinciden se devuelve ya validada para que Django siga su proceso normal
+        return cd['password2']
 
 
 """

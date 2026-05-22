@@ -21,4 +21,5 @@ urlpatterns = [
     path('reportes/<int:id>/', views.detalle_reporte, name='detalle_reporte'),
 
     path('registro/', views.registro, name='registro'),
+    path('registro_musico/', views.registro_musico, name='registro_musico'),
 ]

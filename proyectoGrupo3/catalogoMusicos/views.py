@@ -3,7 +3,7 @@ from django.views.decorators.http import require_POST
 from django.contrib.auth.decorators import login_required
 from django.core.exceptions import PermissionDenied
 from .models import Musico, Banda, Anuncio, Reporte, Evento
-from .forms import MusicoForm, BandaForm, AnuncioForm, ReporteForm, EventoForm, FormularioRegistro
+from .forms import MusicoForm, BandaForm, AnuncioForm, ReporteForm, EventoForm, FormularioRegistro, FormularioRegistroMusico
 
 # Create your views here.
 
@@ -23,6 +23,20 @@ def registro(request):
     else:
         form_registro = FormularioRegistro()
     return render(request, 'catalogoMusicos/registro.html', {'form_registro': form_registro})
+
+def registro_musico(request):
+    if request.method == 'POST':
+        form_registro = FormularioRegistroMusico(request.POST)
+        if form_registro.is_valid():
+            
+            # Creas el objeto en memoria, estableces la contraseña (con el hash seguro) y lo guardas
+            nueva_cuenta = form_registro.save(commit=False)
+            nueva_cuenta.set_password(form_registro.cleaned_data['password']) # Encripta la contraseña.
+            nueva_cuenta.save()
+            return render(request, 'catalogoMusicos/registro_completado.html', {'nueva_cuenta': nueva_cuenta})
+    else:
+        form_registro = FormularioRegistroMusico()
+    return render(request, 'catalogoMusicos/registro_musico.html', {'form_registro': form_registro})
 
 def listar_musicos(request):
     musicos = Musico.objects.all()
