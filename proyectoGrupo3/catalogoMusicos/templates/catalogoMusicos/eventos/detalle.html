@@ -5,6 +5,17 @@
 {% block contenido %}
     <h1>Detalle del Evento</h1>
     <h2>{{ evento.id }} - {{ evento.titulo }}</h2>
+    <p><strong>Bandas que tocan:</strong>
+    <ul>
+        {% for banda in bandas %}
+            <li>
+                <a href="{% url 'catalogoMusicos:detalle_banda' banda.id %}"> {{ banda.nombre }}</a>
+            </li>
+        {%empty%}
+            <span>No hay bandas asociadas</span>
+        {% endfor %}
+    </ul>
+    </p>
     <p><strong>Descripcion:</strong> {{ evento.descripcion|linebreaks }}</p>
     <p><strong>Ubicacion:</strong> {{ evento.ubicacion }}</p>
     <p class="fecha"><strong>Fecha del evento:</strong> {{ evento.fecha_evento }}</p>

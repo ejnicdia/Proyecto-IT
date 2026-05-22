@@ -61,9 +61,10 @@ def detalle_reporte(request, id):
 
 def detalle_evento(request, id):
     evento = get_object_or_404(Evento, id=id)
+    bandas = evento.banda_set.all()
     return render(request,
         'catalogoMusicos/eventos/detalle.html',
-        {'evento': evento})
+        {'evento': evento, 'bandas': bandas})
 
 @login_required
 @require_POST
