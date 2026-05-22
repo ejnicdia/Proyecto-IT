@@ -3,9 +3,9 @@ from django.views.decorators.http import require_POST
 from django.contrib.auth.decorators import login_required
 from django.core.exceptions import PermissionDenied
 from .models import Musico, Banda, Anuncio, Reporte, Evento
-from .forms import MusicoForm, BandaForm, AnuncioForm, ReporteForm, EventoForm, FormularioRegistro, FormularioRegistroMusico
-
-# Create your views here.
+from .forms import BandaForm, AnuncioForm, ReporteForm, EventoForm, FormularioRegistro, FormularioRegistroMusico
+# from .forms import MusicoForm 
+# Comentado todo lo que tiene que ver con musicoForm. Por ahora un perfil no puede crear musicos, si no que se dan de alta ellos.
 
 def mostrar_home(request):
     return render(request, 'catalogoMusicos/home.html', {})
@@ -112,7 +112,7 @@ def crear_reporte(request):
         'reporte': reporte
     })
 
-
+"""
 @login_required
 @require_POST
 def crear_musico(request):
@@ -127,7 +127,7 @@ def crear_musico(request):
         'form': form,
         'musico': musico
     })
-
+"""
 
 @login_required
 @require_POST
@@ -196,7 +196,7 @@ def editar_reporte(request, id):
         'reporte': reporte
     })
 
-
+"""
 @login_required
 def editar_musico(request, id):
     musico = get_object_or_404(Musico, id=id)
@@ -217,7 +217,7 @@ def editar_musico(request, id):
         'form': form,
         'musico': musico
     })
-
+"""
 
 @login_required
 def editar_evento(request, id):
