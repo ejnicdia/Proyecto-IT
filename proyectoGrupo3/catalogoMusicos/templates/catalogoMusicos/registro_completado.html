@@ -1,0 +1,9 @@
+{% extends "catalogoMusicos/base.html" %}
+{% block titulo %}¡Bienvenido/a!{% endblock %}
+{% block contenido %}
+<h1>¡Hola {{ nueva_cuenta.username }}!</h1>
+<p>
+Tu cuenta ha sido creada con éxito.
+Ahora puedes <a href="{% url 'catalogoMusicos:login' %}">iniciar sesión</a>.
+</p>
+{% endblock %}
