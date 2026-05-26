@@ -1,0 +1,285 @@
+[
+  {
+    "model": "auth.user",
+    "pk": 1,
+    "fields": {
+      "password": "pbkdf2_sha256$1000000$2LR3So1whO3FwOyPNlOA0Y$HikKHTFU4nHsCDYQ6SB5bSOwGcBiI1RzsqL09Wpd7Xc=",
+      "last_login": null,
+      "is_superuser": true,
+      "username": "admin",
+      "first_name": "Admin",
+      "last_name": "Sistema",
+      "email": "admin@example.com",
+      "is_staff": true,
+      "is_active": true,
+      "date_joined": "2024-01-01T10:00:00Z",
+      "groups": [],
+      "user_permissions": []
+    }
+  },
+  {
+    "model": "auth.user",
+    "pk": 2,
+    "fields": {
+      "password": "pbkdf2_sha256$1000000$VZ7PJaowtrl5RuF0on4SQh$sVn9ceM22XNolvGs+3N52xF5U+rFOj9KJHgDOSueT4Q=",
+      "last_login": null,
+      "is_superuser": false,
+      "username": "carlos_guitarra",
+      "first_name": "Carlos",
+      "last_name": "García",
+      "email": "carlos@example.com",
+      "is_staff": false,
+      "is_active": true,
+      "date_joined": "2024-01-05T10:00:00Z",
+      "groups": [],
+      "user_permissions": []
+    }
+  },
+  {
+    "model": "auth.user",
+    "pk": 3,
+    "fields": {
+      "password": "pbkdf2_sha256$1000000$dcDo5QCfOSoxsOBlkgWQab$d2yRoMBsNJmxprniaRYMD1NeGsF9/YIZN2SrEoP2qnI=",
+      "last_login": null,
+      "is_superuser": false,
+      "username": "maria_bateria",
+      "first_name": "María",
+      "last_name": "López",
+      "email": "maria@example.com",
+      "is_staff": false,
+      "is_active": true,
+      "date_joined": "2024-01-10T10:00:00Z",
+      "groups": [],
+      "user_permissions": []
+    }
+  },
+  {
+    "model": "auth.user",
+    "pk": 4,
+    "fields": {
+      "password": "pbkdf2_sha256$1000000$qBT8WhpVm6zwTLGObpIAU2$T14ZuM8coIAyep28aENZq6dISw9/lxyUqqOUGDMiOnQ=",
+      "last_login": null,
+      "is_superuser": false,
+      "username": "juan_bajo",
+      "first_name": "Juan",
+      "last_name": "Rodríguez",
+      "email": "juan@example.com",
+      "is_staff": false,
+      "is_active": true,
+      "date_joined": "2024-01-15T10:00:00Z",
+      "groups": [],
+      "user_permissions": []
+    }
+  },
+  {
+    "model": "auth.user",
+    "pk": 5,
+    "fields": {
+      "password": "pbkdf2_sha256$1000000$jnls1olvGRXonm0JJ1aHjm$gq4gpkXLdN2O1K1WFiDIFjVrvaOVAjUrSXDsdtFkiB4=",
+      "last_login": null,
+      "is_superuser": false,
+      "username": "ana_teclados",
+      "first_name": "Ana",
+      "last_name": "Martínez",
+      "email": "ana@example.com",
+      "is_staff": false,
+      "is_active": true,
+      "date_joined": "2024-01-20T10:00:00Z",
+      "groups": [],
+      "user_permissions": []
+    }
+  },
+  {
+    "model": "auth.user",
+    "pk": 6,
+    "fields": {
+      "password": "pbkdf2_sha256$1000000$uRrJTiftXmVbFSwdbiasVS$Ed3qLXC+aqM9t81s0oCoHMJcxnRjznJTRz9D0pSz2Vw=",
+      "last_login": null,
+      "is_superuser": false,
+      "username": "pedro_productor",
+      "first_name": "Pedro",
+      "last_name": "Sánchez",
+      "email": "pedro@example.com",
+      "is_staff": false,
+      "is_active": true,
+      "date_joined": "2024-02-01T10:00:00Z",
+      "groups": [],
+      "user_permissions": []
+    }
+  },
+  {
+    "model": "catalogoMusicos.musico",
+    "pk": 2,
+    "fields": {
+      "user_ptr": 2,
+      "instrumento": "Guitarra",
+      "bio": "Guitarrista experimentado con 10 años de trayectoria. Especializado en rock y blues.",
+      "fecha_inicio_estudio": "2014-05-15"
+    }
+  },
+  {
+    "model": "catalogoMusicos.musico",
+    "pk": 3,
+    "fields": {
+      "user_ptr": 3,
+      "instrumento": "Batería",
+      "bio": "Baterista apasionado por el rock y el metal. Ritmo y precisión son mi marca.",
+      "fecha_inicio_estudio": "2016-03-20"
+    }
+  },
+  {
+    "model": "catalogoMusicos.musico",
+    "pk": 4,
+    "fields": {
+      "user_ptr": 4,
+      "instrumento": "Bajo",
+      "bio": "Bajista con estilo funk y progresivo. 8 años de experiencia en varias bandas.",
+      "fecha_inicio_estudio": "2016-06-10"
+    }
+  },
+  {
+    "model": "catalogoMusicos.musico",
+    "pk": 5,
+    "fields": {
+      "user_ptr": 5,
+      "instrumento": "Teclados",
+      "bio": "Tecladista versatil. Manejo sintetizadores y piano con soltura. Jazz y fusión.",
+      "fecha_inicio_estudio": "2015-09-01"
+    }
+  },
+  {
+    "model": "catalogoMusicos.evento",
+    "pk": 1,
+    "fields": {
+      "titulo": "Festival de Rock 2024",
+      "descripcion": "Gran festival de rock con las mejores bandas de la región. Entrada gratuita.",
+      "fecha_evento": "2024-06-15T20:00:00Z",
+      "fecha_creacion": "2024-01-01T10:00:00Z",
+      "fecha_actualizacion": "2024-01-01T10:00:00Z",
+      "ubicacion": "Plaza Mayor, Centro de la ciudad",
+      "usuario": 1
+    }
+  },
+  {
+    "model": "catalogoMusicos.evento",
+    "pk": 2,
+    "fields": {
+      "titulo": "Concierto Jazz en vivo",
+      "descripcion": "Noche de jazz con los mejores músicos locales. Ambiente íntimo y exclusivo.",
+      "fecha_evento": "2024-05-20T21:00:00Z",
+      "fecha_creacion": "2024-01-05T10:00:00Z",
+      "fecha_actualizacion": "2024-01-05T10:00:00Z",
+      "ubicacion": "Café del Centro, Avenida Principal 123",
+      "usuario": 6
+    }
+  },
+  {
+    "model": "catalogoMusicos.evento",
+    "pk": 3,
+    "fields": {
+      "titulo": "Jam Session Semanal",
+      "descripcion": "Sesión de improvisación para músicos de todos los niveles.",
+      "fecha_evento": "2024-04-10T19:30:00Z",
+      "fecha_creacion": "2024-01-10T10:00:00Z",
+      "fecha_actualizacion": "2024-01-10T10:00:00Z",
+      "ubicacion": "Escuela de Música Local, Calle Música 45",
+      "usuario": 1
+    }
+  },
+  {
+    "model": "catalogoMusicos.banda",
+    "pk": 1,
+    "fields": {
+      "nombre": "Los Rockeros Clásicos",
+      "fecha_creacion": "2020-01-15",
+      "musicos": [2, 3, 4],
+      "eventos": [1]
+    }
+  },
+  {
+    "model": "catalogoMusicos.banda",
+    "pk": 2,
+    "fields": {
+      "nombre": "Jazz Cool Fusion",
+      "fecha_creacion": "2021-06-10",
+      "musicos": [2, 5],
+      "eventos": [2, 3]
+    }
+  },
+  {
+    "model": "catalogoMusicos.banda",
+    "pk": 3,
+    "fields": {
+      "nombre": "Metal Extreme",
+      "fecha_creacion": "2019-03-22",
+      "musicos": [3, 4],
+      "eventos": [1]
+    }
+  },
+  {
+    "model": "catalogoMusicos.anuncio",
+    "pk": 1,
+    "fields": {
+      "titulo": "Buscamos guitarrista para banda de rock",
+      "descripcion": "Banda consolidada busca guitarrista con experiencia en rock progresivo.",
+      "pago": 500.50,
+      "fecha_creacion": "2024-01-01",
+      "usuario": 6,
+      "bandas": [1]
+    }
+  },
+  {
+    "model": "catalogoMusicos.anuncio",
+    "pk": 2,
+    "fields": {
+      "titulo": "Músicos para grabación de EP",
+      "descripcion": "Necesitamos sesión de grabación para 5 canciones. Pago por sesión.",
+      "pago": 1200.00,
+      "fecha_creacion": "2024-01-05",
+      "usuario": 6,
+      "bandas": [2, 3]
+    }
+  },
+  {
+    "model": "catalogoMusicos.anuncio",
+    "pk": 3,
+    "fields": {
+      "titulo": "Tecladista para tour nacional",
+      "descripcion": "Buscamos tecladista versátil para acompañar en tour de 2 meses.",
+      "pago": 2500.00,
+      "fecha_creacion": "2024-01-10",
+      "usuario": 6,
+      "bandas": [1, 2]
+    }
+  },
+  {
+    "model": "catalogoMusicos.reporte",
+    "pk": 1,
+    "fields": {
+      "titulo": "Error al cargar banda",
+      "descripcion_error": "La página de detalles de la banda no carga correctamente.",
+      "fecha_creacion": "2024-01-15T14:30:00Z",
+      "usuario": 2
+    }
+  },
+  {
+    "model": "catalogoMusicos.reporte",
+    "pk": 2,
+    "fields": {
+      "titulo": "Problema con registro de músico",
+      "descripcion_error": "El formulario de registro rechaza direcciones de correo válidas.",
+      "fecha_creacion": "2024-01-16T09:15:00Z",
+      "usuario": 3
+    }
+  },
+  {
+    "model": "catalogoMusicos.reporte",
+    "pk": 3,
+    "fields": {
+      "titulo": "Evento duplicado",
+      "descripcion_error": "El evento del 15 de junio aparece dos veces en el listado.",
+      "fecha_creacion": "2024-01-17T16:45:00Z",
+      "usuario": 5
+    }
+  }
+]
