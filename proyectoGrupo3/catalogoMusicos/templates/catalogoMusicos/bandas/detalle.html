@@ -6,7 +6,6 @@
     <h1>Detalle de la Banda</h1>
     <h2>{{ banda.id }} - {{ banda.nombre }}</h2>
     <p class="fecha"><strong>Fecha de creacion:</strong> {{ banda.fecha_creacion }}</p>
-    <p><strong>Generos:</strong> {{ banda.generos_tags.all|join:", "|default:"Sin generos" }}</p>
 
     <h3>Musicos</h3>
     {% for musico in banda.musicos.all %}
@@ -23,6 +22,13 @@
             <span>Sin eventos asociados.</span>
         {% endfor %}
     </ul>
+
+    {% if request.user.is_authenticated and banda.usuario == request.user %}
+        <p>
+            <a href="{% url 'catalogoMusicos:editar_banda' banda.id %}">Editar Banda</a> |
+            <a href="{% url 'catalogoMusicos:eliminar_banda' banda.id %}">Eliminar Banda</a>
+        </p>
+    {% endif %}
 
     <p><a href="{% url 'catalogoMusicos:listar_bandas' %}">Volver al listado de bandas</a></p>
 {% endblock %}

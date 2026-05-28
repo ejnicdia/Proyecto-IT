@@ -58,13 +58,17 @@ class Evento(models.Model):
 
 class Banda(models.Model):
     nombre = models.CharField(max_length=250)
-    generos_tags = TaggableManager() # Generos
     fecha_creacion = models.DateField()
 
     # Relaciones
     musicos = models.ManyToManyField(Musico)
-    # Los eventos están accesibles a través de banda.eventos.all() (relación inversa de Evento)
-    
+    usuario = models.ForeignKey(
+        settings.AUTH_USER_MODEL,
+        on_delete=models.CASCADE,
+        related_name='bandas',
+        null=True,
+        blank=True
+    )
     def __str__(self):
         return self.nombre
 

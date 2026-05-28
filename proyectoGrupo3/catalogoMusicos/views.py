@@ -178,13 +178,18 @@ def crear_anuncio(request):
 
 
 @login_required
-@require_POST
 def crear_banda(request):
     banda = None
-    form = BandaForm(data=request.POST)
-    if form.is_valid():
-        banda = form.save()
-        
+    if request.method == 'POST':
+        form = BandaForm(data=request.POST)
+        if form.is_valid():
+            banda = form.save(commit=False)
+            banda.usuario = request.user
+            banda.save()
+            return redirect('catalogoMusicos:listar_bandas')
+    else:
+        form = BandaForm()
+
     return render(request, 'catalogoMusicos/bandas/crear.html', {
         'form': form,
         'banda': banda
@@ -269,7 +274,7 @@ def editar_anuncio(request, id):
         form = AnuncioForm(request.POST, instance=anuncio)
         if form.is_valid():
             form.save()
-            return redirect('catalogoMusicos:detalle_anuncio', id=anuncio.id)
+            return redirect('detalle_anuncio', id=anuncio.id)
     else:
         form = AnuncioForm(instance=anuncio)
         
@@ -283,13 +288,9 @@ def editar_anuncio(request, id):
 def editar_banda(request, id):
     banda = get_object_or_404(Banda, id=id)
     
-    # Como Banda no tiene un 'usuario' directo, verificamos si el usuario 
-    # logueado tiene un perfil de músico y si pertenece a los músicos de la banda
-    try:
-        if not banda.musicos.filter(usuario=request.user).exists():
-            raise PermissionDenied("No tienes permiso para editar esta banda porque no eres miembro.")
-    except AttributeError:
-        raise PermissionDenied("Debes tener un perfil de músico asociado para gestionar bandas.")
+    # Solo el creador puede editar la banda
+    if banda.usuario != request.user:
+        raise PermissionDenied("No tienes permiso para editar esta banda porque no eres el creador.")
         
     if request.method == 'POST':
         form = BandaForm(request.POST, instance=banda)
@@ -365,11 +366,9 @@ def eliminar_anuncio(request, id):
 def eliminar_banda(request, id):
     banda = get_object_or_404(Banda, id=id)
     
-    try:
-        if not banda.musicos.filter(usuario=request.user).exists():
-            raise PermissionDenied("No tienes permiso para eliminar esta banda porque no eres miembro.")
-    except AttributeError:
-        raise PermissionDenied("Debes tener un perfil de músico asociado para gestionar bandas.")
+    # Solo el creador puede eliminar la banda
+    if banda.usuario != request.user:
+        raise PermissionDenied("No tienes permiso para eliminar esta banda porque no eres el creador.")
         
     if request.method == 'POST':
         banda.delete()
