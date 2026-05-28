@@ -1,6 +1,7 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from django.views.decorators.http import require_POST
 from django.contrib.auth.decorators import login_required
+from django.contrib import messages
 from django.core.exceptions import PermissionDenied
 from .models import Musico, Banda, Anuncio, Reporte, Evento
 from .forms import BandaForm, AnuncioForm, ReporteForm, EventoForm, FormularioRegistro, FormularioRegistroMusico
@@ -92,7 +93,7 @@ def detalle_reporte(request, id):
 
 def detalle_evento(request, id):
     evento = get_object_or_404(Evento, id=id)
-    bandas = evento.banda_set.all()
+    bandas = evento.bandas.all()
     return render(request,
         'catalogoMusicos/eventos/detalle.html',
         {'evento': evento, 'bandas': bandas})
@@ -130,18 +131,21 @@ def crear_musico(request):
 """
 
 @login_required
-@require_POST
 def crear_evento(request):
-    evento = None
-    form = EventoForm(data=request.POST)
-    if form.is_valid():
-        evento = form.save(commit=False)
-        evento.usuario = request.user
-        evento.save()
-        
+    if request.method == 'POST':
+        form = EventoForm(data=request.POST, user=request.user)
+        if form.is_valid():
+            evento = form.save(commit=False)
+            evento.usuario = request.user
+            evento.save()
+            form.save_m2m()  # Guardar la relación ManyToMany con bandas
+            messages.success(request, f'¡Evento "{evento.titulo}" creado exitosamente!')
+            return redirect('catalogoMusicos:listar_eventos')
+    else:
+        form = EventoForm(user=request.user)
+    
     return render(request, 'catalogoMusicos/eventos/crear.html', {
-        'form': form,
-        'evento': evento
+        'form': form
     })
 
 
@@ -228,12 +232,12 @@ def editar_evento(request, id):
         raise PermissionDenied("No tienes permiso para editar este evento.")
         
     if request.method == 'POST':
-        form = EventoForm(request.POST, instance=evento)
+        form = EventoForm(request.POST, instance=evento, user=request.user)
         if form.is_valid():
             form.save()
-            return redirect('detalle_evento', id=evento.id)
+            return redirect('catalogoMusicos:detalle_evento', id=evento.id)
     else:
-        form = EventoForm(instance=evento)
+        form = EventoForm(instance=evento, user=request.user)
         
     return render(request, 'catalogoMusicos/eventos/editar.html', {
         'form': form,
@@ -326,7 +330,7 @@ def eliminar_evento(request, id):
         
     if request.method == 'POST':
         evento.delete()
-        return redirect('listar_eventos')
+        return redirect('catalogoMusicos:listar_eventos')
         
     return render(request, 'catalogoMusicos/eventos/eliminar.html', {'evento': evento})
 

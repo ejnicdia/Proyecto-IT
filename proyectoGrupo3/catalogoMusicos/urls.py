@@ -15,11 +15,19 @@ urlpatterns = [
     path('bandas/<int:id>/', views.detalle_banda, name='detalle_banda'),
     path('anuncios/', views.listar_anuncios, name='listar_anuncios'),
     path('anuncios/<int:id>/', views.detalle_anuncio, name='detalle_anuncio'),
-    path('eventos/', views.listar_eventos, name='listar_eventos'),
-    path('eventos/<int:id>/', views.detalle_evento, name='detalle_evento'),
     path('reportes/', views.listar_reportes, name='listar_reportes'),
     path('reportes/<int:id>/', views.detalle_reporte, name='detalle_reporte'),
 
     path('registro/', views.registro, name='registro'),
     path('registro_musico/', views.registro_musico, name='registro_musico'),
+    
+    # Rutas de creación, edición y eliminación de eventos
+    path('eventos/crear/', views.crear_evento, name='crear_evento'),
+    path('eventos/<int:id>/editar/', views.editar_evento, name='editar_evento'),
+    path('eventos/<int:id>/eliminar/', views.eliminar_evento, name='eliminar_evento'),
+    path('eventos/<int:id>/', views.detalle_evento, name='detalle_evento'),
+    path('eventos/', views.listar_eventos, name='listar_eventos'),
+    
+    path('reportes/', views.listar_reportes, name='listar_reportes'),
+    path('reportes/<int:id>/', views.detalle_reporte, name='detalle_reporte'),
 ]

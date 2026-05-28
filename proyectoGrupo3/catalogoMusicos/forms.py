@@ -22,9 +22,24 @@ class ReporteForm(forms.ModelForm):
 class EventoForm(forms.ModelForm):
     class Meta:
         model = Evento
-        fields = ['titulo', 'descripcion', 'fecha_evento', 'ubicacion'] # La BANDA tambien habria que ponerlo aqui, 
-                                                                        # pero tiene que poderse poner solo las bandas 
-                                                                        # a las que pertenezca el usuario
+        fields = ['titulo', 'descripcion', 'fecha_evento', 'ubicacion', 'bandas']
+        widgets = {
+            'fecha_evento': forms.DateTimeInput(attrs={
+                'type': 'datetime-local',
+                'class': 'form-control'
+            }),
+            'bandas': forms.CheckboxSelectMultiple()
+        }
+    
+    def __init__(self, *args, user=None, **kwargs):
+        super().__init__(*args, **kwargs)
+        if user:
+            # Filtrar bandas para mostrar solo aquellas a las que pertenece el usuario
+            # Musico hereda de User, así que usamos musicos__pk para filtrar por el usuario
+            self.fields['bandas'].queryset = Banda.objects.filter(musicos__pk=user.pk)
+        else:
+            # Si no hay usuario, mostrar todas las bandas (caso de admin)
+            self.fields['bandas'].queryset = Banda.objects.all()
 
 class FormularioRegistro(forms.ModelForm):
     # Aunque ya está en el modelo, hay que indicarle que es un PasswordInput o lo renderizará como texto

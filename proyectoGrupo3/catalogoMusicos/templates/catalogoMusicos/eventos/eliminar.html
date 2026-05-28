@@ -1,0 +1,22 @@
+{% extends "catalogoMusicos/base.html" %}
+
+{% block titulo %}Eliminar Evento{% endblock %}
+
+{% block contenido %}
+    <h1>Eliminar Evento</h1>
+    
+    <p><strong>Advertencia:</strong> Estás a punto de eliminar el siguiente evento:</p>
+    <h2>{{ evento.titulo }}</h2>
+    <p><strong>Descripción:</strong> {{ evento.descripcion|truncatewords:50 }}</p>
+    <p><strong>Esta acción no se puede deshacer.</strong></p>
+    
+    <form method="post">
+        {% csrf_token %}
+        <button type="submit">Confirmar Eliminación</button>
+    </form>
+    
+    <p>
+        <a href="{% url 'catalogoMusicos:detalle_evento' evento.id %}">Cancelar y volver al evento</a> |
+        <a href="{% url 'catalogoMusicos:listar_eventos' %}">Volver al listado de eventos</a>
+    </p>
+{% endblock %}

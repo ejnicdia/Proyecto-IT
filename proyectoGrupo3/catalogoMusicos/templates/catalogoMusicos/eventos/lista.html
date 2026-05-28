@@ -4,6 +4,17 @@
 
 {% block contenido %}
     <h1>Mis Eventos</h1>
+    
+    {% if messages %}
+        {% for message in messages %}
+            <p><strong>{{ message }}</strong></p>
+        {% endfor %}
+    {% endif %}
+    
+    {% if request.user.is_authenticated %}
+        <p><a href="{% url 'catalogoMusicos:crear_evento' %}">Crear Nuevo Evento</a></p>
+    {% endif %}
+    
     {% for evento in eventos %}
         <h2>
             <a href="{% url 'catalogoMusicos:detalle_evento' evento.id %}"> {{ evento.titulo }}</a>

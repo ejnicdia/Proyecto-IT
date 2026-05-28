@@ -1,0 +1,27 @@
+{% extends "catalogoMusicos/base.html" %}
+
+{% block titulo %}Editar Evento{% endblock %}
+
+{% block contenido %}
+    <h1>Editar Evento</h1>
+    
+    <h2>{{ evento.titulo }}</h2>
+    
+    <form method="post">
+        {% csrf_token %}
+        <table>
+            {{ form.as_table }}
+        </table>
+        <button type="submit">Guardar Cambios</button>
+    </form>
+    
+    {% if form.errors %}
+        <h3>Errores en el formulario:</h3>
+        {{ form.errors }}
+    {% endif %}
+    
+    <p>
+        <a href="{% url 'catalogoMusicos:detalle_evento' evento.id %}">Volver al evento</a> |
+        <a href="{% url 'catalogoMusicos:listar_eventos' %}">Volver al listado de eventos</a>
+    </p>
+{% endblock %}
