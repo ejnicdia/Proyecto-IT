@@ -51,7 +51,7 @@ class Evento(models.Model):
         on_delete=models.CASCADE,
         related_name='eventos_usuario'
     )
-    bandas = models.ManyToManyField('Banda', blank=True)
+    bandas = models.ManyToManyField('Banda', blank=True, related_name='eventos')
     
     def __str__(self):
         return self.titulo
@@ -62,9 +62,8 @@ class Banda(models.Model):
     fecha_creacion = models.DateField()
 
     # Relaciones
-    eventos = models.ManyToManyField(Evento)
     musicos = models.ManyToManyField(Musico)
-    # Anuncio
+    # Los eventos están accesibles a través de banda.eventos.all() (relación inversa de Evento)
     
     def __str__(self):
         return self.nombre

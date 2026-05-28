@@ -76,9 +76,10 @@ def detalle_musico(request, id):
 
 def detalle_banda(request, id):
     banda = get_object_or_404(Banda, id=id)
+    eventos = banda.eventos.all().order_by('fecha_evento')
     return render(request,
         'catalogoMusicos/bandas/detalle.html',
-        {'banda': banda})
+        {'banda': banda, 'eventos': eventos})
 
 def detalle_anuncio(request, id):
     anuncio = get_object_or_404(Anuncio, id=id)

@@ -17,7 +17,7 @@
 
     <h3>Eventos</h3>
     <ul>
-        {% for evento in banda.eventos.all %}
+        {% for evento in eventos %}
             <li><a href="{% url 'catalogoMusicos:detalle_evento' evento.id %}"> {{ evento.titulo }}</a> - {{ evento.fecha_evento }} - {{ evento.ubicacion }}</li>
         {% empty %}
             <span>Sin eventos asociados.</span>
