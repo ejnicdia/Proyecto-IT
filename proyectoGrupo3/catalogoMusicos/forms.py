@@ -9,6 +9,9 @@ class BandaForm(forms.ModelForm):
     class Meta:
         model = Banda
         fields = ['nombre', 'generos_tags', 'fecha_creacion'] # Relaciones como MUSICOS se pondrian en el form????
+        widgets = {
+            'fecha_creacion': forms.DateInput(attrs={'type': 'date'})
+        }
 
 class AnuncioForm(forms.ModelForm):
     class Meta:

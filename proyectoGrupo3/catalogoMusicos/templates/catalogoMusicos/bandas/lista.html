@@ -4,6 +4,10 @@
 
 {% block contenido %}
     <h1>Mis Bandas</h1>
+    {% if request.user.is_authenticated %}
+        <p><a href="{% url 'catalogoMusicos:crear_banda' %}">Crear nueva banda</a></p>
+    {% endif %}
+
     {% for banda in bandas %}
         <h2>
             <a href="{% url 'catalogoMusicos:detalle_banda' banda.id %}"> {{ banda.nombre }}</a>

@@ -24,5 +24,12 @@
         {% endfor %}
     </ul>
 
+    {% if request.user.is_authenticated and banda.usuario == request.user %}
+        <p>
+            <a href="{% url 'catalogoMusicos:editar_banda' banda.id %}">Editar Banda</a> |
+            <a href="{% url 'catalogoMusicos:eliminar_banda' banda.id %}">Eliminar Banda</a>
+        </p>
+    {% endif %}
+
     <p><a href="{% url 'catalogoMusicos:listar_bandas' %}">Volver al listado de bandas</a></p>
 {% endblock %}

@@ -62,7 +62,13 @@ class Banda(models.Model):
     # Relaciones
     eventos = models.ManyToManyField(Evento)
     musicos = models.ManyToManyField(Musico)
-    # Anuncio
+    usuario = models.ForeignKey(
+        settings.AUTH_USER_MODEL,
+        on_delete=models.CASCADE,
+        related_name='bandas',
+        null=True,
+        blank=True
+    )
     
     def __str__(self):
         return self.nombre

@@ -1,0 +1,27 @@
+{% extends "catalogoMusicos/base.html" %}
+
+{% block titulo %}Editar Banda{% endblock %}
+
+{% block contenido %}
+    <h1>Editar Banda</h1>
+
+    <h2>{{ banda.nombre }}</h2>
+
+    <form method="post">
+        {% csrf_token %}
+        <table>
+            {{ form.as_table }}
+        </table>
+        <button type="submit">Guardar Cambios</button>
+    </form>
+
+    {% if form.errors %}
+        <h3>Errores en el formulario:</h3>
+        {{ form.errors }}
+    {% endif %}
+
+    <p>
+        <a href="{% url 'catalogoMusicos:detalle_banda' banda.id %}">Volver a la banda</a> |
+        <a href="{% url 'catalogoMusicos:listar_bandas' %}">Volver al listado de bandas</a>
+    </p>
+{% endblock %}

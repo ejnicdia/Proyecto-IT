@@ -1,0 +1,26 @@
+{% extends "catalogoMusicos/base.html" %}
+
+{% block titulo %}Eliminar Banda{% endblock %}
+
+{% block contenido %}
+    <h1>Eliminar Banda</h1>
+
+    <p><strong>Advertencia:</strong> Estás a punto de eliminar la siguiente banda:</p>
+    <h2>{{ banda.nombre }}</h2>
+    <p><strong>Fecha de creación:</strong> {{ banda.fecha_creacion }}</p>
+    <p><strong>Géneros:</strong> {{ banda.generos_tags.all|join:", "|default:"Sin géneros" }}</p>
+    {% if banda.usuario %}
+        <p><strong>Creador:</strong> {{ banda.usuario.username }}</p>
+    {% endif %}
+    <p><strong>Esta acción no se puede deshacer.</strong></p>
+
+    <form method="post">
+        {% csrf_token %}
+        <button type="submit">Confirmar Eliminación</button>
+    </form>
+
+    <p>
+        <a href="{% url 'catalogoMusicos:detalle_banda' banda.id %}">Cancelar y volver a la banda</a> |
+        <a href="{% url 'catalogoMusicos:listar_bandas' %}">Volver al listado de bandas</a>
+    </p>
+{% endblock %}

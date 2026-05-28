@@ -12,8 +12,11 @@ urlpatterns = [
     path('musicos/', views.listar_musicos, name='listar_musicos'),
     path('musicos/<int:id>/', views.detalle_musico, name='detalle_musico'),
     
-    path('bandas/', views.listar_bandas, name='listar_bandas'),
+    path('bandas/crear/', views.crear_banda, name='crear_banda'),
+    path('bandas/<int:id>/editar/', views.editar_banda, name='editar_banda'),
+    path('bandas/<int:id>/eliminar/', views.eliminar_banda, name='eliminar_banda'),
     path('bandas/<int:id>/', views.detalle_banda, name='detalle_banda'),
+    path('bandas/', views.listar_bandas, name='listar_bandas'),
 
     path('anuncios/', views.listar_anuncios, name='listar_anuncios'),
     path('anuncios/<int:id>/', views.detalle_anuncio, name='detalle_anuncio'),
@@ -33,8 +36,4 @@ urlpatterns = [
     path('eventos/<int:id>/eliminar/', views.eliminar_evento, name='eliminar_evento'),
     path('eventos/<int:id>/', views.detalle_evento, name='detalle_evento'),
     path('eventos/', views.listar_eventos, name='listar_eventos'),
-    
-    path('reportes/', views.listar_reportes, name='listar_reportes'),
-    path('reportes/<int:id>/', views.detalle_reporte, name='detalle_reporte'),
-
 ]
