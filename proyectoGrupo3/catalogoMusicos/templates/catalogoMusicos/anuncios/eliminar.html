@@ -1,0 +1,22 @@
+{% extends "catalogoMusicos/base.html" %}
+
+{% block titulo %}Eliminar Anuncio{% endblock %}
+
+{% block contenido %}
+    <h1>Eliminar Anuncio</h1>
+    
+    <p><strong>Advertencia:</strong> Estás a punto de eliminar el siguiente evento:</p>
+    <h2>{{ anuncio.titulo }}</h2>
+    <p><strong>Descripción:</strong> {{ anuncio.descripcion|truncatewords:50 }}</p>
+    <p><strong>Esta acción no se puede deshacer.</strong></p>
+    
+    <form method="post">
+        {% csrf_token %}
+        <button type="submit">Confirmar Eliminación</button>
+    </form>
+    
+    <p>
+        <a href="{% url 'catalogoMusicos:detalle_anuncio' anuncio.id %}">Cancelar y volver al anuncio</a> |
+        <a href="{% url 'catalogoMusicos:listar_anuncios' %}">Volver al listado de anuncios</a>
+    </p>
+{% endblock %}

@@ -198,7 +198,7 @@ def editar_reporte(request, id):
         form = ReporteForm(request.POST, instance=reporte)
         if form.is_valid():
             form.save()
-            return redirect('detalle_reporte', id=reporte.id)
+            return redirect('catalogoMusicos:detalle_reporte', id=reporte.id)
     else:
         form = ReporteForm(instance=reporte)
         
@@ -265,7 +265,7 @@ def editar_anuncio(request, id):
         form = AnuncioForm(request.POST, instance=anuncio)
         if form.is_valid():
             form.save()
-            return redirect('detalle_anuncio', id=anuncio.id)
+            return redirect('catalogoMusicos:detalle_anuncio', id=anuncio.id)
     else:
         form = AnuncioForm(instance=anuncio)
         
@@ -291,7 +291,7 @@ def editar_banda(request, id):
         form = BandaForm(request.POST, instance=banda)
         if form.is_valid():
             form.save()
-            return redirect('detalle_banda', id=banda.id)
+            return redirect('catalogoMusicos:detalle_banda', id=banda.id)
     else:
         form = BandaForm(instance=banda)
         
@@ -310,7 +310,7 @@ def eliminar_reporte(request, id):
         
     if request.method == 'POST':
         reporte.delete()
-        return redirect('listar_reportes')
+        return redirect('catalogoMusicos:listar_reportes')
         
     return render(request, 'catalogoMusicos/reportes/eliminar.html', {'reporte': reporte})
 
@@ -324,7 +324,7 @@ def eliminar_musico(request, id):
         
     if request.method == 'POST':
         musico.delete()
-        return redirect('listar_musicos')
+        return redirect('catalogoMusicos:listar_musicos')
         
     return render(request, 'catalogoMusicos/musicos/eliminar.html', {'musico': musico})
 
@@ -352,7 +352,7 @@ def eliminar_anuncio(request, id):
         
     if request.method == 'POST':
         anuncio.delete()
-        return redirect('listar_anuncios')
+        return redirect('catalogoMusicos:listar_anuncios')
         
     return render(request, 'catalogoMusicos/anuncios/eliminar.html', {'anuncio': anuncio})
 
@@ -369,7 +369,7 @@ def eliminar_banda(request, id):
         
     if request.method == 'POST':
         banda.delete()
-        return redirect('listar_bandas')
+        return redirect('catalogoMusicos:listar_bandas')
         
     return render(request, 'catalogoMusicos/bandas/eliminar.html', {'banda': banda})
 
