@@ -157,19 +157,22 @@ def crear_evento(request):
 
 
 @login_required
-@require_POST
 def crear_anuncio(request):
-    anuncio = None
-    form = AnuncioForm(data=request.POST)
-    if form.is_valid():
-        anuncio = form.save(commit=False)
-        anuncio.usuario = request.user
-        anuncio.save()
-        form.save_m2m() 
+    if request.method == 'POST':
+        anuncio = None
+        form = AnuncioForm(data=request.POST)
+        if form.is_valid():
+            anuncio = form.save(commit=False)
+            anuncio.usuario = request.user
+            anuncio.save()
+            form.save_m2m() 
+            messages.success(request, f'Anuncio "{anuncio.titulo}" creado exitosamente!')
+            return redirect('catalogoMusicos:listar_anuncios')
+    else:
+        form = AnuncioForm()
         
     return render(request, 'catalogoMusicos/anuncios/crear.html', {
         'form': form,
-        'anuncio': anuncio
     })
 
 
