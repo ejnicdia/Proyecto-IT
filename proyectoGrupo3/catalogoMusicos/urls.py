@@ -11,10 +11,16 @@ urlpatterns = [
     # Ruta para el listado (ej: /catalogoMusicos/listar)
     path('musicos/', views.listar_musicos, name='listar_musicos'),
     path('musicos/<int:id>/', views.detalle_musico, name='detalle_musico'),
+    
     path('bandas/', views.listar_bandas, name='listar_bandas'),
     path('bandas/<int:id>/', views.detalle_banda, name='detalle_banda'),
+
     path('anuncios/', views.listar_anuncios, name='listar_anuncios'),
     path('anuncios/<int:id>/', views.detalle_anuncio, name='detalle_anuncio'),
+    path('anuncios/crear/', views.crear_anuncio, name='crear_anuncio'),
+    path('anuncios/<int:id>/editar/', views.editar_anuncio, name='editar_anuncio'),
+    path('anuncios/<int:id>/eliminar/', views.eliminar_anuncio, name='eliminar_anuncio'),
+
     path('reportes/', views.listar_reportes, name='listar_reportes'),
     path('reportes/<int:id>/', views.detalle_reporte, name='detalle_reporte'),
 
@@ -30,4 +36,5 @@ urlpatterns = [
     
     path('reportes/', views.listar_reportes, name='listar_reportes'),
     path('reportes/<int:id>/', views.detalle_reporte, name='detalle_reporte'),
+
 ]

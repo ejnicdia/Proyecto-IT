@@ -17,5 +17,12 @@
         <p>Sin bandas asociadas.</p>
     {% endfor %}
 
+    {% if request.user == anuncio.usuario %}
+        <p>
+            <a href="{% url 'catalogoMusicos:editar_anuncio' anuncio.id %}">Editar Anuncio</a> |
+            <a href="{% url 'catalogoMusicos:eliminar_anuncio' anuncio.id %}">Eliminar Anuncio</a>
+        </p>
+    {% endif %}
+
     <p><a href="{% url 'catalogoMusicos:listar_anuncios' %}">Volver al listado de anuncios</a></p>
 {% endblock %}
