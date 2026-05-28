@@ -22,11 +22,27 @@ class ReporteForm(forms.ModelForm):
 class EventoForm(forms.ModelForm):
     class Meta:
         model = Evento
-        fields = ['titulo', 'descripcion', 'fecha_evento', 'ubicacion', 'bandas']
+        fields = ['titulo', 'descripcion', 'fecha_evento', 'ubicacion', 'latitud', 'longitud', 'bandas']
         widgets = {
             'fecha_evento': forms.DateTimeInput(attrs={
                 'type': 'datetime-local',
                 'class': 'form-control'
+            }),
+            'latitud': forms.TextInput(attrs={
+                'type': 'number',
+                'step': 'any',
+                'placeholder': 'Latitud (ej: 40.7128)',
+                'class': 'form-control',
+                'min': '-90',
+                'max': '90'
+            }),
+            'longitud': forms.TextInput(attrs={
+                'type': 'number',
+                'step': 'any',
+                'placeholder': 'Longitud (ej: -74.0060)',
+                'class': 'form-control',
+                'min': '-180',
+                'max': '180'
             }),
             'bandas': forms.CheckboxSelectMultiple()
         }

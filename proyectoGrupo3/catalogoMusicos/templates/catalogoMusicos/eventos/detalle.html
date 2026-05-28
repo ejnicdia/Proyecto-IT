@@ -23,6 +23,74 @@
     <p class="fecha"><strong>Actualizado:</strong> {{ evento.fecha_actualizacion }}</p>
     <p><strong>Creado por:</strong> <a href="{% url 'catalogoMusicos:detalle_musico' evento.usuario.id %}"> {{ evento.usuario.username }}</a></p>
     
+    <!-- Widget Google Maps -->
+    {% if evento.latitud and evento.longitud %}
+    <div style="margin-top: 30px;">
+        <h3>Ubicación en Mapa</h3>
+        <div id="map-container" style="width: 100%; height: 400px;">
+        </div>
+    </div>
+    
+    <script async defer src="https://maps.googleapis.com/maps/api/js?key={{ google_maps_api_key }}&libraries=places"></script>
+    <script>
+        function initMap() {
+            const eventLocation = {
+                lat: {{ evento.latitud }},
+                lng: {{ evento.longitud }}
+            };
+
+            const map = new google.maps.Map(document.getElementById('map-container'), {
+                zoom: 15,
+                center: eventLocation
+            });
+
+            const marker = new google.maps.Marker({
+                position: eventLocation,
+                map: map,
+                title: '{{ evento.titulo }}'
+            });
+
+            // Info window con detalles del evento
+            const infoWindow = new google.maps.InfoWindow({
+                content: `
+                    <div style="padding: 10px;">
+                        <h4>{{ evento.titulo }}</h4>
+                        <p><strong>Ubicación:</strong> {{ evento.ubicacion }}</p>
+                        <p><strong>Fecha:</strong> {{ evento.fecha_evento }}</p>
+                    </div>
+                `
+            });
+
+            marker.addListener('click', function() {
+                infoWindow.open(map, marker);
+            });
+
+            // Abrir info window por defecto
+            infoWindow.open(map, marker);
+        }
+
+        // Esperar a que Google Maps esté disponible
+        function waitForGoogleMaps() {
+            if (typeof google !== 'undefined' && google.maps) {
+                initMap();
+            } else {
+                setTimeout(waitForGoogleMaps, 100);
+            }
+        }
+
+        // Iniciar el proceso cuando el documento esté listo
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', waitForGoogleMaps);
+        } else {
+            waitForGoogleMaps();
+        }
+    </script>
+    {% else %}
+    <div>
+        <p><strong>Nota:</strong> Este evento no tiene coordenadas de ubicación configuradas.</p>
+    </div>
+    {% endif %}
+    
     {% if request.user == evento.usuario %}
         <p>
             <a href="{% url 'catalogoMusicos:editar_evento' evento.id %}">Editar Evento</a> |

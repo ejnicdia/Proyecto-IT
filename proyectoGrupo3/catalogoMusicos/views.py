@@ -3,6 +3,7 @@ from django.views.decorators.http import require_POST
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 from django.core.exceptions import PermissionDenied
+from django.conf import settings
 from .models import Musico, Banda, Anuncio, Reporte, Evento
 from .forms import BandaForm, AnuncioForm, ReporteForm, EventoForm, FormularioRegistro, FormularioRegistroMusico
 # from .forms import MusicoForm 
@@ -94,9 +95,14 @@ def detalle_reporte(request, id):
 def detalle_evento(request, id):
     evento = get_object_or_404(Evento, id=id)
     bandas = evento.bandas.all()
+    context = {
+        'evento': evento,
+        'bandas': bandas,
+        'google_maps_api_key': settings.GOOGLE_MAPS_API_KEY
+    }
     return render(request,
         'catalogoMusicos/eventos/detalle.html',
-        {'evento': evento, 'bandas': bandas})
+        context)
 
 @login_required
 @require_POST
@@ -145,7 +151,8 @@ def crear_evento(request):
         form = EventoForm(user=request.user)
     
     return render(request, 'catalogoMusicos/eventos/crear.html', {
-        'form': form
+        'form': form,
+        'google_maps_api_key': settings.GOOGLE_MAPS_API_KEY
     })
 
 
@@ -241,7 +248,8 @@ def editar_evento(request, id):
         
     return render(request, 'catalogoMusicos/eventos/editar.html', {
         'form': form,
-        'evento': evento
+        'evento': evento,
+        'google_maps_api_key': settings.GOOGLE_MAPS_API_KEY
     })
 
 
