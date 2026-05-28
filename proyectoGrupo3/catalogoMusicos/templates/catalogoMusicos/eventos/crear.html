@@ -1,4 +1,5 @@
 {% extends "catalogoMusicos/base.html" %}
+{% load static %}
 
 {% block titulo %}Crear Evento{% endblock %}
 
@@ -18,5 +19,15 @@
         {{ form.errors }}
     {% endif %}
     
+    <!-- Contenedor del Mapa Interactivo -->
+    <div>
+        <h3>Selecciona la Ubicación en el Mapa</h3>
+        
+        <div id="map-event" style="width: 100%; height: 400px;"></div>
+    </div>
+    
     <p><a href="{% url 'catalogoMusicos:listar_eventos' %}">Volver al listado de eventos</a></p>
+
+    <script async defer src="https://maps.googleapis.com/maps/api/js?key={{ google_maps_api_key }}&libraries=places"></script>
+    <script src="{% static 'evento_maps.js' %}"></script>
 {% endblock %}

@@ -41,7 +41,9 @@ class Evento(models.Model):
     fecha_creacion = models.DateTimeField(auto_now_add=True)
     fecha_actualizacion = models.DateTimeField(auto_now=True)
     ubicacion = models.CharField(max_length=250)
-    # atributo de ubicacion como enlace a google maps
+    # Coordenadas para Google Maps (DecimalField para mayor precisión)
+    latitud = models.DecimalField(max_digits=9, decimal_places=6, null=True, blank=True)
+    longitud = models.DecimalField(max_digits=9, decimal_places=6, null=True, blank=True)
 
     # Relaciones
     usuario = models.ForeignKey(

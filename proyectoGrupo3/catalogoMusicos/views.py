@@ -3,6 +3,7 @@ from django.views.decorators.http import require_POST
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 from django.core.exceptions import PermissionDenied
+from django.conf import settings
 from .models import Musico, Banda, Anuncio, Reporte, Evento
 from .forms import BandaForm, AnuncioForm, ReporteForm, EventoForm, FormularioRegistro, FormularioRegistroMusico
 # from .forms import MusicoForm 
@@ -94,9 +95,14 @@ def detalle_reporte(request, id):
 def detalle_evento(request, id):
     evento = get_object_or_404(Evento, id=id)
     bandas = evento.bandas.all()
+    context = {
+        'evento': evento,
+        'bandas': bandas,
+        'google_maps_api_key': settings.GOOGLE_MAPS_API_KEY
+    }
     return render(request,
         'catalogoMusicos/eventos/detalle.html',
-        {'evento': evento, 'bandas': bandas})
+        context)
 
 @login_required
 @require_POST
@@ -145,24 +151,28 @@ def crear_evento(request):
         form = EventoForm(user=request.user)
     
     return render(request, 'catalogoMusicos/eventos/crear.html', {
-        'form': form
+        'form': form,
+        'google_maps_api_key': settings.GOOGLE_MAPS_API_KEY
     })
 
 
 @login_required
-@require_POST
 def crear_anuncio(request):
-    anuncio = None
-    form = AnuncioForm(data=request.POST)
-    if form.is_valid():
-        anuncio = form.save(commit=False)
-        anuncio.usuario = request.user
-        anuncio.save()
-        form.save_m2m() 
+    if request.method == 'POST':
+        anuncio = None
+        form = AnuncioForm(data=request.POST)
+        if form.is_valid():
+            anuncio = form.save(commit=False)
+            anuncio.usuario = request.user
+            anuncio.save()
+            form.save_m2m() 
+            messages.success(request, f'Anuncio "{anuncio.titulo}" creado exitosamente!')
+            return redirect('catalogoMusicos:listar_anuncios')
+    else:
+        form = AnuncioForm()
         
     return render(request, 'catalogoMusicos/anuncios/crear.html', {
         'form': form,
-        'anuncio': anuncio
     })
 
 
@@ -246,7 +256,8 @@ def editar_evento(request, id):
         
     return render(request, 'catalogoMusicos/eventos/editar.html', {
         'form': form,
-        'evento': evento
+        'evento': evento,
+        'google_maps_api_key': settings.GOOGLE_MAPS_API_KEY
     })
 
 
