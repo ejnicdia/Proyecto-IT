@@ -58,7 +58,6 @@ class Evento(models.Model):
 
 class Banda(models.Model):
     nombre = models.CharField(max_length=250)
-    generos_tags = TaggableManager() # Generos
     fecha_creacion = models.DateField()
 
     # Relaciones
