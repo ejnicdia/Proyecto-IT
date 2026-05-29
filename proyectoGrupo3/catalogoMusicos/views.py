@@ -186,6 +186,7 @@ def crear_banda(request):
             banda = form.save(commit=False)
             banda.usuario = request.user
             banda.save()
+            form.save_m2m()
             return redirect('catalogoMusicos:listar_bandas')
     else:
         form = BandaForm()
