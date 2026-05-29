@@ -4,6 +4,11 @@
 
 {% block contenido %}
     <h1>Mis Reportes</h1>
+
+    {% if request.user.is_authenticated %}
+        <p><a class="btn" href="{% url 'catalogoMusicos:crear_reporte' %}">Crear Nuevo Reporte</a></p>
+    {% endif %}
+
     {% for reporte in reportes %}
     <article class="card">
         <h2 class="card-title">
