@@ -25,6 +25,14 @@ class BandaForm(forms.ModelForm):
             'musicos': 'Selecciona uno o más músicos existentes para añadirlos a la banda.'
         }
 
+class MusicoForm(forms.ModelForm):
+    class Meta:
+        model = Musico
+        fields = ['username', 'last_name', 'email', 'instrumento', 'bio', 'fecha_inicio_estudio']
+        widgets = {
+            'fecha_inicio_estudio': forms.DateInput(attrs={'type': 'date'})
+        }
+
 class AnuncioForm(forms.ModelForm):
     class Meta:
         model = Anuncio
