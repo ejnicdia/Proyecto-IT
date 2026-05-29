@@ -274,7 +274,7 @@ def editar_anuncio(request, id):
         form = AnuncioForm(request.POST, instance=anuncio)
         if form.is_valid():
             form.save()
-            return redirect('detalle_anuncio', id=anuncio.id)
+            return redirect('catalogoMusicos:detalle_anuncio', id=anuncio.id)
     else:
         form = AnuncioForm(instance=anuncio)
         

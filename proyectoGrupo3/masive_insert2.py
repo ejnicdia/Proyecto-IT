@@ -89,8 +89,8 @@ else:
         )
         
         # Agregar tags (TaggableManager)
-        tags_elegidos = random.sample(GENEROS, k=random.randint(1, 3))
-        banda.generos_tags.add(*tags_elegidos)
+        #tags_elegidos = random.sample(GENEROS, k=random.randint(1, 3))
+        #banda.generos_tags.add(*tags_elegidos)
         
         # Asignar entre 1 y 3 eventos aleatorios a la banda (ManyToMany)
         if eventos_creados:
@@ -98,7 +98,7 @@ else:
             banda.eventos.set(eventos_asignar)
             
         bandas_creadas.append(banda)
-        print(f" -> Creada Banda: {banda.nombre} (Tags: {', '.join(tags_elegidos)})")
+        #print(f" -> Creada Banda: {banda.nombre} (Tags: {', '.join(tags_elegidos)})")
 
     # --- 3. Generación de ANUNCIOS ---
     print("\n>>> Creando Anuncios...")
