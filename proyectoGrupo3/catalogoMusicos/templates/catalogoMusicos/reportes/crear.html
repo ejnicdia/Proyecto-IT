@@ -1,0 +1,22 @@
+{% extends "catalogoMusicos/base.html" %}
+
+{% block titulo %}Crear Reporte{% endblock %}
+
+{% block contenido %}
+    <h1>Crear nuevo reporte</h1>
+
+    <form method="post">
+        {% csrf_token %}
+        <table>
+            {{ form.as_table }}
+        </table>
+        <button type="submit">Crear Reporte</button>
+    </form>
+
+    {% if form.errors %}
+        <h3>Errores en el formulario:</h3>
+        {{ form.errors }}
+    {% endif %}
+
+    <p><a href="{% url 'catalogoMusicos:listar_reportes' %}">Volver al listado de reportes</a></p>
+{% endblock %}

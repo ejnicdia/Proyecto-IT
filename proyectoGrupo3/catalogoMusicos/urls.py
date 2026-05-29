@@ -8,7 +8,7 @@ urlpatterns = [
     path('cuenta/', include('django.contrib.auth.urls')),
     path('', views.mostrar_home, name='home'),
 
-    # Ruta para el listado (ej: /catalogoMusicos/listar)
+    # Rutas para los CRUD de los modelos (ej: /catalogoMusicos/listar)
     path('musicos/crear/', views.crear_musico, name='crear_musico'),
     path('musicos/<int:id>/editar/', views.editar_musico, name='editar_musico'),
     path('musicos/<int:id>/eliminar/', views.eliminar_musico, name='eliminar_musico'),
@@ -29,7 +29,11 @@ urlpatterns = [
 
     path('reportes/', views.listar_reportes, name='listar_reportes'),
     path('reportes/<int:id>/', views.detalle_reporte, name='detalle_reporte'),
+    path('reportes/crear/', views.crear_reporte, name='crear_reporte'),
+    path('reportes/<int:id>/editar/', views.editar_reporte, name='editar_reporte'),
+    path('reportes/<int:id>/eliminar/', views.eliminar_reporte, name='eliminar_reporte'),
 
+    # Metodos de registro
     path('registro/', views.registro, name='registro'),
     path('registro_musico/', views.registro_musico, name='registro_musico'),
     
