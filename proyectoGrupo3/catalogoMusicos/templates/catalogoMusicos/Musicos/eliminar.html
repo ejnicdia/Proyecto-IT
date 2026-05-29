@@ -1,0 +1,24 @@
+{% extends "catalogoMusicos/base.html" %}
+
+{% block titulo %}Eliminar Músico{% endblock %}
+
+{% block contenido %}
+<h1>Eliminar músico</h1>
+
+<p><strong>Advertencia:</strong> Estás a punto de eliminar el siguiente músico:</p>
+<h2>{{ musico.username }}</h2>
+<p><strong>Instrumento:</strong> {{ musico.instrumento }}</p>
+<p><strong>Inicio de estudio:</strong> {{ musico.fecha_inicio_estudio }}</p>
+<p><strong>Email:</strong> {{ musico.email }}</p>
+<p><strong>Esta acción no se puede deshacer.</strong></p>
+
+<form method="post">
+    {% csrf_token %}
+    <button type="submit">Confirmar eliminación</button>
+</form>
+
+<p>
+    <a href="{% url 'catalogoMusicos:detalle_musico' musico.id %}">Cancelar y volver al músico</a> |
+    <a href="{% url 'catalogoMusicos:listar_musicos' %}">Volver al listado de músicos</a>
+</p>
+{% endblock %}

@@ -1,0 +1,27 @@
+{% extends "catalogoMusicos/base.html" %}
+
+{% block titulo %}Editar Músico{% endblock %}
+
+{% block contenido %}
+    <h1>Editar músico</h1>
+
+    <h2>{{ musico.username }}</h2>
+
+    <form method="post">
+        {% csrf_token %}
+        <table>
+            {{ form.as_table }}
+        </table>
+        <button type="submit">Guardar cambios</button>
+    </form>
+
+    {% if form.errors %}
+        <h3>Errores en el formulario:</h3>
+        {{ form.errors }}
+    {% endif %}
+
+    <p>
+        <a href="{% url 'catalogoMusicos:detalle_musico' musico.id %}">Volver al músico</a> |
+        <a href="{% url 'catalogoMusicos:listar_musicos' %}">Volver al listado de músicos</a>
+    </p>
+{% endblock %}

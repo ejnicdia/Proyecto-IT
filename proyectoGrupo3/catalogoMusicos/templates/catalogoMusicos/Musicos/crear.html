@@ -1,0 +1,22 @@
+{% extends "catalogoMusicos/base.html" %}
+
+{% block titulo %}Crear Músico{% endblock %}
+
+{% block contenido %}
+    <h1>Crear nuevo músico</h1>
+
+    <form method="post">
+        {% csrf_token %}
+        <table>
+            {{ form.as_table }}
+        </table>
+        <button type="submit">Crear Músico</button>
+    </form>
+
+    {% if form.errors %}
+        <h3>Errores en el formulario:</h3>
+        {{ form.errors }}
+    {% endif %}
+
+    <p><a href="{% url 'catalogoMusicos:listar_musicos' %}">Volver al listado de músicos</a></p>
+{% endblock %}

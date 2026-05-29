@@ -9,8 +9,11 @@ urlpatterns = [
     path('', views.mostrar_home, name='home'),
 
     # Ruta para el listado (ej: /catalogoMusicos/listar)
-    path('musicos/', views.listar_musicos, name='listar_musicos'),
+    path('musicos/crear/', views.crear_musico, name='crear_musico'),
+    path('musicos/<int:id>/editar/', views.editar_musico, name='editar_musico'),
+    path('musicos/<int:id>/eliminar/', views.eliminar_musico, name='eliminar_musico'),
     path('musicos/<int:id>/', views.detalle_musico, name='detalle_musico'),
+    path('musicos/', views.listar_musicos, name='listar_musicos'),
     
     path('bandas/crear/', views.crear_banda, name='crear_banda'),
     path('bandas/<int:id>/editar/', views.editar_banda, name='editar_banda'),

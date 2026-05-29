@@ -6,11 +6,31 @@ from .models import Musico, Banda, Anuncio, Reporte, Evento
 
 
 class BandaForm(forms.ModelForm):
+    musicos = forms.ModelMultipleChoiceField(
+        queryset=Musico.objects.all(),
+        required=False,
+        widget=forms.CheckboxSelectMultiple(attrs={
+            'class': 'form-control'
+        }),
+        label='Músicos existentes'
+    )
+
     class Meta:
         model = Banda
-        fields = ['nombre', 'fecha_creacion'] # Relaciones como MUSICOS se pondrian en el form????
+        fields = ['nombre', 'fecha_creacion', 'musicos']
         widgets = {
             'fecha_creacion': forms.DateInput(attrs={'type': 'date'})
+        }
+        help_texts = {
+            'musicos': 'Selecciona uno o más músicos existentes para añadirlos a la banda.'
+        }
+
+class MusicoForm(forms.ModelForm):
+    class Meta:
+        model = Musico
+        fields = ['username', 'last_name', 'email', 'instrumento', 'bio', 'fecha_inicio_estudio']
+        widgets = {
+            'fecha_inicio_estudio': forms.DateInput(attrs={'type': 'date'})
         }
 
 class AnuncioForm(forms.ModelForm):
