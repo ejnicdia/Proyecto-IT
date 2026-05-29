@@ -12,8 +12,7 @@
     {% for musico in musicos %}
     <article class="card">
         <h2 class="card-title">
-            <a href="{% url 'catalogoMusicos:detalle_musico' musico.id %}"> {{ musico.username }} toca {{
-                musico.instrumento}}</a>
+            <a href="{% url 'catalogoMusicos:detalle_musico' musico.id %}"> {{ musico.username }}</a>
         </h2>
         <p class="card-meta">{{ musico.instrumento }}</p>
         <p>{{ musico.bio|truncatewords:30|linebreaks }}</p>
