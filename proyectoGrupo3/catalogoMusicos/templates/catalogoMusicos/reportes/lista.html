@@ -4,6 +4,11 @@
 
 {% block contenido %}
     <h1>Mis Reportes</h1>
+
+    {% if request.user.is_authenticated %}
+        <p><a href="{% url 'catalogoMusicos:crear_reporte' %}">Crear nuevo reporte</a></p>
+    {% endif %}
+
     {% for reporte in reportes %}
         <h2>
             <a href="{% url 'catalogoMusicos:detalle_reporte' reporte.id %}"> {{ reporte.titulo }}</a>
