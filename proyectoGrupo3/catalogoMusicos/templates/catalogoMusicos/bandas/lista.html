@@ -3,19 +3,23 @@
 {% block titulo %}Mi Catalogo de Musicos - Bandas{% endblock %}
 
 {% block contenido %}
-    <h1>Mis Bandas</h1>
-    {% if request.user.is_authenticated %}
-        <p><a href="{% url 'catalogoMusicos:crear_banda' %}">Crear nueva banda</a></p>
-    {% endif %}
+<h1>Mis Bandas</h1>
+{% if request.user.is_authenticated %}
+<p><a class="btn" href="{% url 'catalogoMusicos:crear_banda' %}">Crear nueva banda</a></p>
+{% endif %}
 
+<div class="card-list">
     {% for banda in bandas %}
-        <h2>
+    <article class="card">
+        <h2 class="card-title">
             <a href="{% url 'catalogoMusicos:detalle_banda' banda.id %}"> {{ banda.nombre }}</a>
         </h2>
-        <p class="fecha">Creada: {{ banda.fecha_creacion }}</p>
+        <p class="card-meta">Creada: {{ banda.fecha_creacion }}</p>
         <p>Musicos registrados: {{ banda.musicos.count }}</p>
         <p>Eventos asociados: {{ banda.eventos.count }}</p>
+    </article>
     {% empty %}
-        <p>No hay bandas disponibles.</p>
+    <p>No hay bandas disponibles.</p>
     {% endfor %}
+</div>
 {% endblock %}

@@ -1,0 +1,260 @@
+/* Dark mode catalogoMusicos theme */
+:root {
+  color-scheme: dark;
+  font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+    sans-serif;
+  background: #0c1117;
+  color: #e6edf6;
+  --surface: #151b24;
+  --surface-strong: #1f2632;
+  --surface-muted: #10141a;
+  --border: rgba(255, 255, 255, 0.08);
+  --accent: #7ce7ff;
+  --accent-strong: #31c6ff;
+  --text-muted: #97a6ba;
+  --shadow: 0 20px 60px rgba(0, 0, 0, 0.35);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  min-height: 100%;
+  margin: 0;
+  background: radial-gradient(
+      circle at top,
+      rgba(94, 154, 255, 0.12),
+      transparent 32%
+    ),
+    linear-gradient(180deg, #0b0f16 0%, #0c1117 100%);
+}
+
+body {
+  color: var(--text);
+  line-height: 1.6;
+}
+
+body,
+input,
+select,
+textarea,
+button {
+  font: 400 16px/1.6 Inter, system-ui, -apple-system, BlinkMacSystemFont,
+    "Segoe UI", sans-serif;
+}
+
+.topbar {
+  background: rgba(20, 28, 40, 0.95);
+  border-bottom: 1px solid var(--border);
+  padding: 1rem 1.5rem;
+  position: sticky;
+  top: 0;
+  z-index: 20;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.topbar-brand {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.brand-link,
+.user-greeting,
+.logout-form {
+  color: #e6edf6;
+}
+
+.brand-link {
+  display: inline-flex;
+  align-items: center;
+  text-decoration: none;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  color: #e6edf6;
+}
+
+.brand-link:hover {
+  color: var(--accent);
+}
+
+.user-greeting {
+  font-size: 0.98rem;
+}
+
+.logout-form {
+  display: inline-flex;
+  align-items: center;
+}
+
+.nav-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.75rem;
+  margin: 0.5rem 0 0;
+}
+
+.nav-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 120px;
+  padding: 0.9rem 1.3rem;
+  background: rgba(255, 255, 255, 0.05);
+  color: #e6edf6;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 18px;
+  text-decoration: none;
+  font-weight: 600;
+  transition: transform 0.18s ease, background 0.18s ease,
+    border-color 0.18s ease;
+}
+
+.nav-link:hover {
+  background: rgba(124, 231, 255, 0.12);
+  border-color: rgba(124, 231, 255, 0.22);
+  transform: translateY(-1px);
+}
+
+.btn-small {
+  padding: 0.4rem 0.9rem;
+  font-size: 0.95rem;
+}
+
+nav,
+nav a,
+nav span,
+nav button {
+  color: inherit;
+}
+
+#content {
+  max-width: 1120px;
+  margin: 1.5rem auto 2rem;
+  padding: 1.75rem;
+  background: rgba(16, 22, 33, 0.95);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  border-radius: 28px;
+  box-shadow: var(--shadow);
+}
+
+h1,
+h2,
+h3,
+h4 {
+  color: #f4f8ff;
+  margin-top: 0;
+}
+
+h1 {
+  font-size: clamp(2rem, 2.8vw, 3.4rem);
+}
+
+h2 {
+  font-size: 1.8rem;
+}
+
+p,
+li,
+td,
+th {
+  color: #d8e1f2;
+}
+
+a {
+  color: var(--accent);
+}
+
+a:hover {
+  color: var(--accent-strong);
+}
+
+.card-list {
+  display: grid;
+  gap: 1.25rem;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  margin: 1.5rem 0;
+}
+
+.card {
+  background: rgba(21, 27, 38, 0.96);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 22px;
+  padding: 1.4rem;
+  box-shadow: 0 24px 40px rgba(0, 0, 0, 0.25);
+  transition: transform 0.24s ease, border-color 0.24s ease,
+    background 0.24s ease;
+}
+
+.card:hover {
+  transform: translateY(-4px);
+  border-color: rgba(124, 231, 255, 0.22);
+}
+
+.card-title {
+  font-size: 1.2rem;
+  margin-bottom: 0.65rem;
+  color: #f8fbff;
+}
+
+.card-meta {
+  color: var(--text-muted);
+  font-size: 0.96rem;
+  margin-bottom: 1rem;
+}
+
+.card p {
+  margin: 0 0 1rem;
+}
+
+.btn,
+button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  border-radius: 999px;
+  padding: 0.7rem 1.15rem;
+  background: linear-gradient(135deg, #4dc1ff 0%, #26a5eb 100%);
+  color: #08101b;
+  font-weight: 600;
+  text-decoration: none;
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.btn:hover,
+button:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 12px 24px rgba(38, 165, 235, 0.25);
+}
+
+.btn-outline {
+  background: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  color: #eff4ff;
+}
+
+.footer-note {
+  color: var(--text-muted);
+  font-size: 0.95rem;
+}
+
+@media (max-width: 800px) {
+  nav {
+    padding: 1rem;
+  }
+
+  #content {
+    margin: 1rem;
+    padding: 1.25rem;
+  }
+}

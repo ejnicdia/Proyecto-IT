@@ -8,12 +8,18 @@
 
 {% endif %}
 
-{% for musico in musicos %}
-<h2>
-    <a href="{% url 'catalogoMusicos:detalle_musico' musico.id %}"> {{ musico.username }} toca {{ musico.instrumento}}</a>
-</h2>
-{{ musico.bio|truncatewords:30|linebreaks }}
-{% empty %}
-<p>No hay musicos disponibles.</p>
-{% endfor %}
+<div class="card-list">
+    {% for musico in musicos %}
+    <article class="card">
+        <h2 class="card-title">
+            <a href="{% url 'catalogoMusicos:detalle_musico' musico.id %}"> {{ musico.username }} toca {{
+                musico.instrumento}}</a>
+        </h2>
+        <p class="card-meta">{{ musico.instrumento }}</p>
+        <p>{{ musico.bio|truncatewords:30|linebreaks }}</p>
+    </article>
+    {% empty %}
+    <p>No hay musicos disponibles.</p>
+    {% endfor %}
+</div>
 {% endblock %}

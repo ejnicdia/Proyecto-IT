@@ -3,20 +3,25 @@
 {% block titulo %}Mi Catalogo de Musicos - Anuncios{% endblock %}
 
 {% block contenido %}
-    <h1>Mis Anuncios</h1>
+<h1>Mis Anuncios</h1>
 
-    {% if request.user.is_authenticated %}
-        <p><a href="{% url 'catalogoMusicos:crear_anuncio' %}">Crear Nuevo Anuncio</a></p>
-    {% endif %}
+{% if request.user.is_authenticated %}
+<p><a class="btn" href="{% url 'catalogoMusicos:crear_anuncio' %}">Crear Nuevo Anuncio</a></p>
+{% endif %}
 
+<div class="card-list">
     {% for anuncio in anuncios %}
-        <h2>
-            <a href="{% url 'catalogoMusicos:detalle_anuncio' anuncio.id %}"> {{ anuncio.titulo }} - {{ anuncio.pago }}</a>
+    <article class="card">
+        <h2 class="card-title">
+            <a href="{% url 'catalogoMusicos:detalle_anuncio' anuncio.id %}"> {{ anuncio.titulo }} - {{ anuncio.pago
+                }}</a>
         </h2>
         <p>{{ anuncio.descripcion|truncatewords:30 }}</p>
-        <p class="fecha">Creado: {{ anuncio.fecha_creacion }}</p>
+        <p class="card-meta">Creado: {{ anuncio.fecha_creacion }}</p>
         <p>Publicado por: {{ anuncio.usuario.username }}</p>
+    </article>
     {% empty %}
-        <p>No hay anuncios disponibles.</p>
+    <p>No hay anuncios disponibles.</p>
     {% endfor %}
+</div>
 {% endblock %}

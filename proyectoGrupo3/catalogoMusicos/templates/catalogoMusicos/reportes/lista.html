@@ -3,15 +3,19 @@
 {% block titulo %}Mi Catalogo de Musicos - Reportes{% endblock %}
 
 {% block contenido %}
-    <h1>Mis Reportes</h1>
+<h1>Mis Reportes</h1>
+<div class="card-list">
     {% for reporte in reportes %}
-        <h2>
+    <article class="card">
+        <h2 class="card-title">
             <a href="{% url 'catalogoMusicos:detalle_reporte' reporte.id %}"> {{ reporte.titulo }}</a>
         </h2>
-        {{ reporte.descripcion_error|truncatewords:30|linebreaks }}
-        <p class="fecha">Creado: {{ reporte.fecha_creacion }}</p>
-        <p>Usuario: {{ reporte.usuario.username }}</p>
+        <p>{{ reporte.descripcion_error|truncatewords:30|linebreaks }}</p>
+        <p class="card-meta">Creado: {{ reporte.fecha_creacion }}</p>
+        <p class="card-meta">Usuario: {{ reporte.usuario.username }}</p>
+    </article>
     {% empty %}
-        <p>No hay reportes disponibles.</p>
+    <p>No hay reportes disponibles.</p>
     {% endfor %}
+</div>
 {% endblock %}
