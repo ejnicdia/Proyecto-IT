@@ -9,5 +9,13 @@
     {{ reporte.descripcion_error|linebreaks }}
     <p class="fecha"><strong>Fecha de creacion:</strong> {{ reporte.fecha_creacion }}</p>
     <p><strong>Usuario:</strong> {{ reporte.usuario.username }}</p>
+    
+    {% if request.user.is_authenticated and reporte.usuario == request.user %}
+        <p>
+            <a href="{% url 'catalogoMusicos:editar_reporte' reporte.id %}">Editar Reporte</a> |
+            <a href="{% url 'catalogoMusicos:eliminar_reporte' reporte.id %}">Eliminar Reporte</a>
+        </p>
+    {% endif %}
+
     <p><a href="{% url 'catalogoMusicos:listar_reportes' %}">Volver al listado de reportes</a></p>
 {% endblock %}

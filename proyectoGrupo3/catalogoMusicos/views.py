@@ -187,8 +187,25 @@ def detalle_evento(request, id):
 
 
 @login_required
-@require_POST
 def crear_reporte(request):
+    if request.method == "POST":
+        form = ReporteForm(data=request.POST)
+        if form.is_valid():
+            reporte = form.save(commit=False)
+            reporte.usuario = request.user
+            reporte.save()
+            form.save_m2m()  # Guardar la relación ManyToMany con bandas
+            messages.success(request, f'¡Reporte "{reporte.titulo}" creado exitosamente!')
+            return redirect("catalogoMusicos:listar_reportes")
+    else:
+        form = ReporteForm()
+
+    return render(
+        request,
+        "catalogoMusicos/reportes/crear.html",
+        {"form": form},
+    )
+"""
     reporte = None
     form = ReporteForm(data=request.POST)
     if form.is_valid():
@@ -201,7 +218,7 @@ def crear_reporte(request):
         "catalogoMusicos/reportes/crear.html",
         {"form": form, "reporte": reporte},
     )
-
+"""
 
 """
 @login_required
