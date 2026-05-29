@@ -5,6 +5,7 @@ from django.contrib import messages
 from django.core.exceptions import PermissionDenied
 from django.conf import settings
 from .models import Musico, Banda, Anuncio, Reporte, Evento
+from django.contrib.auth.models import User
 from .forms import (
     BandaForm,
     AnuncioForm,
@@ -101,7 +102,6 @@ def detalle_musico(request, id):
     musico = get_object_or_404(Musico, id=id)
     return render(request, "catalogoMusicos/musicos/detalle.html", {"musico": musico})
 
-
 @login_required
 def crear_musico(request):
     if request.method == "POST":
@@ -150,6 +150,18 @@ def eliminar_musico(request, id):
 
     return render(request, "catalogoMusicos/musicos/eliminar.html", {"musico": musico})
 
+@login_required
+def detalle_user(request, id):
+    user = get_object_or_404(User, id=id)
+
+    if user != request.user:
+        raise PermissionDenied("No tienes permiso para ver este perfil.")
+    
+    return render(
+        request,
+        "catalogoMusicos/user/detalle.html",
+        {"user": user},
+    )
 
 def detalle_banda(request, id):
     banda = get_object_or_404(Banda, id=id)
@@ -205,20 +217,7 @@ def crear_reporte(request):
         "catalogoMusicos/reportes/crear.html",
         {"form": form},
     )
-"""
-    reporte = None
-    form = ReporteForm(data=request.POST)
-    if form.is_valid():
-        reporte = form.save(commit=False)
-        reporte.usuario = request.user
-        reporte.save()
 
-    return render(
-        request,
-        "catalogoMusicos/reportes/crear.html",
-        {"form": form, "reporte": reporte},
-    )
-"""
 
 """
 @login_required
@@ -327,7 +326,7 @@ def editar_reporte(request, id):
     )
 
 
-"""
+
 @login_required
 def editar_musico(request, id):
     musico = get_object_or_404(Musico, id=id)
@@ -348,7 +347,28 @@ def editar_musico(request, id):
         'form': form,
         'musico': musico
     })
-"""
+
+@login_required
+def editar_user(request, id):
+    user = get_object_or_404(User, id=id)
+    
+    # Validar propiedad (Relación OneToOne)
+    if user != request.user:
+        raise PermissionDenied("No tienes permiso para editar este perfil de músico.")
+        
+    if request.method == 'POST':
+        form = FormularioRegistro(request.POST, instance=user)
+        if form.is_valid():
+            form.save()
+            return redirect('detalle_user', id=user.id)
+    else:
+        form = FormularioRegistro(instance=user)
+        
+    return render(request, 'catalogoMusicos/user/editar.html', {
+        'form': form,
+        'user': user
+    })
+
 
 
 @login_required
@@ -440,6 +460,20 @@ def eliminar_reporte(request, id):
         request, "catalogoMusicos/reportes/eliminar.html", {"reporte": reporte}
     )
 
+
+@login_required
+def eliminar_user(request, id):
+    user = get_object_or_404(User, id=id)
+
+    # Comparar pks en lugar de acceder a atributos inexistentes
+    if request.user != user:
+        raise PermissionDenied("No tienes permiso para eliminar este perfil de músico.")
+
+    if request.method == "POST":
+        user.delete()
+        return redirect("catalogoMusicos:home")
+
+    return render(request, "catalogoMusicos/user/eliminar.html", {"user": user})
 
 @login_required
 def eliminar_musico(request, id):

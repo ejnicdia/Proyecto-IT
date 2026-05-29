@@ -1,0 +1,27 @@
+{% extends "catalogoMusicos/base.html" %}
+
+{% block titulo %}Editar Reporte{% endblock %}
+
+{% block contenido %}
+    <h1>Editar Cuenta</h1>
+
+    <h2>{{ user.username }}</h2>
+
+    <form method="post">
+        {% csrf_token %}
+        <table>
+            {{ form.as_table }}
+        </table>
+        <button type="submit">Guardar cambios</button>
+    </form>
+
+    {% if form.errors %}
+        <h3>Errores en el formulario:</h3>
+        {{ form.errors }}
+    {% endif %}
+
+    <p>
+        <a href="{% url 'catalogoMusicos:detalle_user' user.id %}">Volver a la Cuenta</a> |
+        <a href="{% url 'catalogoMusicos:home' %}">Volver al inicio</a>
+    </p>
+{% endblock %}

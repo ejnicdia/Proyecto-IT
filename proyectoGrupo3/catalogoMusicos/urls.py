@@ -33,6 +33,10 @@ urlpatterns = [
     path('reportes/<int:id>/editar/', views.editar_reporte, name='editar_reporte'),
     path('reportes/<int:id>/eliminar/', views.eliminar_reporte, name='eliminar_reporte'),
 
+    path('user/<int:id>/', views.detalle_user, name='detalle_user'),
+    path('user/<int:id>/editar/', views.editar_user, name='editar_user'),
+    path('user/<int:id>/eliminar/', views.eliminar_user, name='eliminar_user'),
+
     # Metodos de registro
     path('registro/', views.registro, name='registro'),
     path('registro_musico/', views.registro_musico, name='registro_musico'),

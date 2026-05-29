@@ -1,0 +1,19 @@
+{% extends "catalogoMusicos/base.html" %}
+
+{% block titulo %}Perfil de usuario{% endblock %}
+
+{% block contenido %}
+    <h1>Tu Perfil</h1>
+    <h2>Nombre: {{ user.username }} {{ user.lastname }}</h2>
+    <p><strong>Email:</strong> {{ user.email }}</p>
+    <p class="fecha"><strong>Fecha de creacion:</strong> {{ user.date_joined }}</p>
+    
+    {% if request.user.is_authenticated and user == request.user %}
+        <p>
+            <a href="{% url 'catalogoMusicos:editar_user' user.id %}">Editar Usuario</a> |
+            <a href="{% url 'catalogoMusicos:eliminar_user' user.id %}">Eliminar Cuenta</a>
+        </p>
+    {% endif %}
+
+    <p><a href="{% url 'catalogoMusicos:home' %}">Volver al inicio</a></p>
+{% endblock %}

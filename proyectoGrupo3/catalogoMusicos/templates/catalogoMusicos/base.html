@@ -13,7 +13,7 @@
 		<div class="topbar-brand">
 			<a class="brand-link" href="{% url 'catalogoMusicos:home' %}">Inicio</a>
 			{% if request.user.is_authenticated %}
-			<span class="user-greeting">Hola, {{ request.user.username }}.</span>
+			<span class="user-greeting">  <a class="brand-link" href="{% url 'catalogoMusicos:detalle_user' user.id %}">Hola, {{ request.user.username }}</a> </span>
 			<form action="{% url 'catalogoMusicos:logout' %}" method="post" class="logout-form">
 				{% csrf_token %}
 				<button type="submit" class="btn btn-small">Cerrar Sesión</button>
