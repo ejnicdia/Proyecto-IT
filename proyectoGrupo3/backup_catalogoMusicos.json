@@ -1,0 +1,1117 @@
+[
+{
+    "model": "contenttypes.contenttype",
+    "fields": {
+        "app_label": "catalogoMusicos",
+        "model": "musico"
+    }
+},
+{
+    "model": "contenttypes.contenttype",
+    "fields": {
+        "app_label": "catalogoMusicos",
+        "model": "banda"
+    }
+},
+{
+    "model": "contenttypes.contenttype",
+    "fields": {
+        "app_label": "catalogoMusicos",
+        "model": "anuncio"
+    }
+},
+{
+    "model": "contenttypes.contenttype",
+    "fields": {
+        "app_label": "catalogoMusicos",
+        "model": "evento"
+    }
+},
+{
+    "model": "contenttypes.contenttype",
+    "fields": {
+        "app_label": "catalogoMusicos",
+        "model": "reporte"
+    }
+},
+{
+    "model": "contenttypes.contenttype",
+    "fields": {
+        "app_label": "admin",
+        "model": "logentry"
+    }
+},
+{
+    "model": "contenttypes.contenttype",
+    "fields": {
+        "app_label": "auth",
+        "model": "permission"
+    }
+},
+{
+    "model": "contenttypes.contenttype",
+    "fields": {
+        "app_label": "auth",
+        "model": "group"
+    }
+},
+{
+    "model": "contenttypes.contenttype",
+    "fields": {
+        "app_label": "auth",
+        "model": "user"
+    }
+},
+{
+    "model": "contenttypes.contenttype",
+    "fields": {
+        "app_label": "contenttypes",
+        "model": "contenttype"
+    }
+},
+{
+    "model": "contenttypes.contenttype",
+    "fields": {
+        "app_label": "sessions",
+        "model": "session"
+    }
+},
+{
+    "model": "contenttypes.contenttype",
+    "fields": {
+        "app_label": "taggit",
+        "model": "tag"
+    }
+},
+{
+    "model": "contenttypes.contenttype",
+    "fields": {
+        "app_label": "taggit",
+        "model": "taggeditem"
+    }
+},
+{
+    "model": "auth.permission",
+    "fields": {
+        "name": "Can add user",
+        "content_type": [
+            "catalogoMusicos",
+            "musico"
+        ],
+        "codename": "add_musico"
+    }
+},
+{
+    "model": "auth.permission",
+    "fields": {
+        "name": "Can change user",
+        "content_type": [
+            "catalogoMusicos",
+            "musico"
+        ],
+        "codename": "change_musico"
+    }
+},
+{
+    "model": "auth.permission",
+    "fields": {
+        "name": "Can delete user",
+        "content_type": [
+            "catalogoMusicos",
+            "musico"
+        ],
+        "codename": "delete_musico"
+    }
+},
+{
+    "model": "auth.permission",
+    "fields": {
+        "name": "Can view user",
+        "content_type": [
+            "catalogoMusicos",
+            "musico"
+        ],
+        "codename": "view_musico"
+    }
+},
+{
+    "model": "auth.permission",
+    "fields": {
+        "name": "Can add banda",
+        "content_type": [
+            "catalogoMusicos",
+            "banda"
+        ],
+        "codename": "add_banda"
+    }
+},
+{
+    "model": "auth.permission",
+    "fields": {
+        "name": "Can change banda",
+        "content_type": [
+            "catalogoMusicos",
+            "banda"
+        ],
+        "codename": "change_banda"
+    }
+},
+{
+    "model": "auth.permission",
+    "fields": {
+        "name": "Can delete banda",
+        "content_type": [
+            "catalogoMusicos",
+            "banda"
+        ],
+        "codename": "delete_banda"
+    }
+},
+{
+    "model": "auth.permission",
+    "fields": {
+        "name": "Can view banda",
+        "content_type": [
+            "catalogoMusicos",
+            "banda"
+        ],
+        "codename": "view_banda"
+    }
+},
+{
+    "model": "auth.permission",
+    "fields": {
+        "name": "Can add anuncio",
+        "content_type": [
+            "catalogoMusicos",
+            "anuncio"
+        ],
+        "codename": "add_anuncio"
+    }
+},
+{
+    "model": "auth.permission",
+    "fields": {
+        "name": "Can change anuncio",
+        "content_type": [
+            "catalogoMusicos",
+            "anuncio"
+        ],
+        "codename": "change_anuncio"
+    }
+},
+{
+    "model": "auth.permission",
+    "fields": {
+        "name": "Can delete anuncio",
+        "content_type": [
+            "catalogoMusicos",
+            "anuncio"
+        ],
+        "codename": "delete_anuncio"
+    }
+},
+{
+    "model": "auth.permission",
+    "fields": {
+        "name": "Can view anuncio",
+        "content_type": [
+            "catalogoMusicos",
+            "anuncio"
+        ],
+        "codename": "view_anuncio"
+    }
+},
+{
+    "model": "auth.permission",
+    "fields": {
+        "name": "Can add evento",
+        "content_type": [
+            "catalogoMusicos",
+            "evento"
+        ],
+        "codename": "add_evento"
+    }
+},
+{
+    "model": "auth.permission",
+    "fields": {
+        "name": "Can change evento",
+        "content_type": [
+            "catalogoMusicos",
+            "evento"
+        ],
+        "codename": "change_evento"
+    }
+},
+{
+    "model": "auth.permission",
+    "fields": {
+        "name": "Can delete evento",
+        "content_type": [
+            "catalogoMusicos",
+            "evento"
+        ],
+        "codename": "delete_evento"
+    }
+},
+{
+    "model": "auth.permission",
+    "fields": {
+        "name": "Can view evento",
+        "content_type": [
+            "catalogoMusicos",
+            "evento"
+        ],
+        "codename": "view_evento"
+    }
+},
+{
+    "model": "auth.permission",
+    "fields": {
+        "name": "Can add reporte",
+        "content_type": [
+            "catalogoMusicos",
+            "reporte"
+        ],
+        "codename": "add_reporte"
+    }
+},
+{
+    "model": "auth.permission",
+    "fields": {
+        "name": "Can change reporte",
+        "content_type": [
+            "catalogoMusicos",
+            "reporte"
+        ],
+        "codename": "change_reporte"
+    }
+},
+{
+    "model": "auth.permission",
+    "fields": {
+        "name": "Can delete reporte",
+        "content_type": [
+            "catalogoMusicos",
+            "reporte"
+        ],
+        "codename": "delete_reporte"
+    }
+},
+{
+    "model": "auth.permission",
+    "fields": {
+        "name": "Can view reporte",
+        "content_type": [
+            "catalogoMusicos",
+            "reporte"
+        ],
+        "codename": "view_reporte"
+    }
+},
+{
+    "model": "auth.permission",
+    "fields": {
+        "name": "Can add log entry",
+        "content_type": [
+            "admin",
+            "logentry"
+        ],
+        "codename": "add_logentry"
+    }
+},
+{
+    "model": "auth.permission",
+    "fields": {
+        "name": "Can change log entry",
+        "content_type": [
+            "admin",
+            "logentry"
+        ],
+        "codename": "change_logentry"
+    }
+},
+{
+    "model": "auth.permission",
+    "fields": {
+        "name": "Can delete log entry",
+        "content_type": [
+            "admin",
+            "logentry"
+        ],
+        "codename": "delete_logentry"
+    }
+},
+{
+    "model": "auth.permission",
+    "fields": {
+        "name": "Can view log entry",
+        "content_type": [
+            "admin",
+            "logentry"
+        ],
+        "codename": "view_logentry"
+    }
+},
+{
+    "model": "auth.permission",
+    "fields": {
+        "name": "Can add permission",
+        "content_type": [
+            "auth",
+            "permission"
+        ],
+        "codename": "add_permission"
+    }
+},
+{
+    "model": "auth.permission",
+    "fields": {
+        "name": "Can change permission",
+        "content_type": [
+            "auth",
+            "permission"
+        ],
+        "codename": "change_permission"
+    }
+},
+{
+    "model": "auth.permission",
+    "fields": {
+        "name": "Can delete permission",
+        "content_type": [
+            "auth",
+            "permission"
+        ],
+        "codename": "delete_permission"
+    }
+},
+{
+    "model": "auth.permission",
+    "fields": {
+        "name": "Can view permission",
+        "content_type": [
+            "auth",
+            "permission"
+        ],
+        "codename": "view_permission"
+    }
+},
+{
+    "model": "auth.permission",
+    "fields": {
+        "name": "Can add group",
+        "content_type": [
+            "auth",
+            "group"
+        ],
+        "codename": "add_group"
+    }
+},
+{
+    "model": "auth.permission",
+    "fields": {
+        "name": "Can change group",
+        "content_type": [
+            "auth",
+            "group"
+        ],
+        "codename": "change_group"
+    }
+},
+{
+    "model": "auth.permission",
+    "fields": {
+        "name": "Can delete group",
+        "content_type": [
+            "auth",
+            "group"
+        ],
+        "codename": "delete_group"
+    }
+},
+{
+    "model": "auth.permission",
+    "fields": {
+        "name": "Can view group",
+        "content_type": [
+            "auth",
+            "group"
+        ],
+        "codename": "view_group"
+    }
+},
+{
+    "model": "auth.permission",
+    "fields": {
+        "name": "Can add user",
+        "content_type": [
+            "auth",
+            "user"
+        ],
+        "codename": "add_user"
+    }
+},
+{
+    "model": "auth.permission",
+    "fields": {
+        "name": "Can change user",
+        "content_type": [
+            "auth",
+            "user"
+        ],
+        "codename": "change_user"
+    }
+},
+{
+    "model": "auth.permission",
+    "fields": {
+        "name": "Can delete user",
+        "content_type": [
+            "auth",
+            "user"
+        ],
+        "codename": "delete_user"
+    }
+},
+{
+    "model": "auth.permission",
+    "fields": {
+        "name": "Can view user",
+        "content_type": [
+            "auth",
+            "user"
+        ],
+        "codename": "view_user"
+    }
+},
+{
+    "model": "auth.permission",
+    "fields": {
+        "name": "Can add content type",
+        "content_type": [
+            "contenttypes",
+            "contenttype"
+        ],
+        "codename": "add_contenttype"
+    }
+},
+{
+    "model": "auth.permission",
+    "fields": {
+        "name": "Can change content type",
+        "content_type": [
+            "contenttypes",
+            "contenttype"
+        ],
+        "codename": "change_contenttype"
+    }
+},
+{
+    "model": "auth.permission",
+    "fields": {
+        "name": "Can delete content type",
+        "content_type": [
+            "contenttypes",
+            "contenttype"
+        ],
+        "codename": "delete_contenttype"
+    }
+},
+{
+    "model": "auth.permission",
+    "fields": {
+        "name": "Can view content type",
+        "content_type": [
+            "contenttypes",
+            "contenttype"
+        ],
+        "codename": "view_contenttype"
+    }
+},
+{
+    "model": "auth.permission",
+    "fields": {
+        "name": "Can add session",
+        "content_type": [
+            "sessions",
+            "session"
+        ],
+        "codename": "add_session"
+    }
+},
+{
+    "model": "auth.permission",
+    "fields": {
+        "name": "Can change session",
+        "content_type": [
+            "sessions",
+            "session"
+        ],
+        "codename": "change_session"
+    }
+},
+{
+    "model": "auth.permission",
+    "fields": {
+        "name": "Can delete session",
+        "content_type": [
+            "sessions",
+            "session"
+        ],
+        "codename": "delete_session"
+    }
+},
+{
+    "model": "auth.permission",
+    "fields": {
+        "name": "Can view session",
+        "content_type": [
+            "sessions",
+            "session"
+        ],
+        "codename": "view_session"
+    }
+},
+{
+    "model": "auth.permission",
+    "fields": {
+        "name": "Can add tag",
+        "content_type": [
+            "taggit",
+            "tag"
+        ],
+        "codename": "add_tag"
+    }
+},
+{
+    "model": "auth.permission",
+    "fields": {
+        "name": "Can change tag",
+        "content_type": [
+            "taggit",
+            "tag"
+        ],
+        "codename": "change_tag"
+    }
+},
+{
+    "model": "auth.permission",
+    "fields": {
+        "name": "Can delete tag",
+        "content_type": [
+            "taggit",
+            "tag"
+        ],
+        "codename": "delete_tag"
+    }
+},
+{
+    "model": "auth.permission",
+    "fields": {
+        "name": "Can view tag",
+        "content_type": [
+            "taggit",
+            "tag"
+        ],
+        "codename": "view_tag"
+    }
+},
+{
+    "model": "auth.permission",
+    "fields": {
+        "name": "Can add tagged item",
+        "content_type": [
+            "taggit",
+            "taggeditem"
+        ],
+        "codename": "add_taggeditem"
+    }
+},
+{
+    "model": "auth.permission",
+    "fields": {
+        "name": "Can change tagged item",
+        "content_type": [
+            "taggit",
+            "taggeditem"
+        ],
+        "codename": "change_taggeditem"
+    }
+},
+{
+    "model": "auth.permission",
+    "fields": {
+        "name": "Can delete tagged item",
+        "content_type": [
+            "taggit",
+            "taggeditem"
+        ],
+        "codename": "delete_taggeditem"
+    }
+},
+{
+    "model": "auth.permission",
+    "fields": {
+        "name": "Can view tagged item",
+        "content_type": [
+            "taggit",
+            "taggeditem"
+        ],
+        "codename": "view_taggeditem"
+    }
+},
+{
+    "model": "auth.user",
+    "fields": {
+        "password": "pbkdf2_sha256$1000000$2LR3So1whO3FwOyPNlOA0Y$HikKHTFU4nHsCDYQ6SB5bSOwGcBiI1RzsqL09Wpd7Xc=",
+        "last_login": null,
+        "is_superuser": true,
+        "username": "admin",
+        "first_name": "Admin",
+        "last_name": "Sistema",
+        "email": "admin@example.com",
+        "is_staff": true,
+        "is_active": true,
+        "date_joined": "2024-01-01T10:00:00Z",
+        "groups": [],
+        "user_permissions": []
+    }
+},
+{
+    "model": "auth.user",
+    "fields": {
+        "password": "pbkdf2_sha256$1000000$VZ7PJaowtrl5RuF0on4SQh$sVn9ceM22XNolvGs+3N52xF5U+rFOj9KJHgDOSueT4Q=",
+        "last_login": null,
+        "is_superuser": false,
+        "username": "carlos_guitarra",
+        "first_name": "Carlos",
+        "last_name": "García",
+        "email": "carlos@example.com",
+        "is_staff": false,
+        "is_active": true,
+        "date_joined": "2024-01-05T10:00:00Z",
+        "groups": [],
+        "user_permissions": []
+    }
+},
+{
+    "model": "auth.user",
+    "fields": {
+        "password": "pbkdf2_sha256$1000000$dcDo5QCfOSoxsOBlkgWQab$d2yRoMBsNJmxprniaRYMD1NeGsF9/YIZN2SrEoP2qnI=",
+        "last_login": null,
+        "is_superuser": false,
+        "username": "maria_bateria",
+        "first_name": "María",
+        "last_name": "López",
+        "email": "maria@example.com",
+        "is_staff": false,
+        "is_active": true,
+        "date_joined": "2024-01-10T10:00:00Z",
+        "groups": [],
+        "user_permissions": []
+    }
+},
+{
+    "model": "auth.user",
+    "fields": {
+        "password": "pbkdf2_sha256$1000000$qBT8WhpVm6zwTLGObpIAU2$T14ZuM8coIAyep28aENZq6dISw9/lxyUqqOUGDMiOnQ=",
+        "last_login": null,
+        "is_superuser": false,
+        "username": "juan_bajo",
+        "first_name": "Juan",
+        "last_name": "Rodríguez",
+        "email": "juan@example.com",
+        "is_staff": false,
+        "is_active": true,
+        "date_joined": "2024-01-15T10:00:00Z",
+        "groups": [],
+        "user_permissions": []
+    }
+},
+{
+    "model": "auth.user",
+    "fields": {
+        "password": "pbkdf2_sha256$1000000$jnls1olvGRXonm0JJ1aHjm$gq4gpkXLdN2O1K1WFiDIFjVrvaOVAjUrSXDsdtFkiB4=",
+        "last_login": null,
+        "is_superuser": false,
+        "username": "ana_teclados",
+        "first_name": "Ana",
+        "last_name": "Martínez",
+        "email": "ana@example.com",
+        "is_staff": false,
+        "is_active": true,
+        "date_joined": "2024-01-20T10:00:00Z",
+        "groups": [],
+        "user_permissions": []
+    }
+},
+{
+    "model": "auth.user",
+    "fields": {
+        "password": "pbkdf2_sha256$1000000$uRrJTiftXmVbFSwdbiasVS$Ed3qLXC+aqM9t81s0oCoHMJcxnRjznJTRz9D0pSz2Vw=",
+        "last_login": "2026-05-30T14:06:40.516Z",
+        "is_superuser": false,
+        "username": "pedro_productor",
+        "first_name": "Pedro",
+        "last_name": "Sánchez",
+        "email": "pedro@example.com",
+        "is_staff": false,
+        "is_active": true,
+        "date_joined": "2024-02-01T10:00:00Z",
+        "groups": [],
+        "user_permissions": []
+    }
+},
+{
+    "model": "auth.user",
+    "fields": {
+        "password": "pbkdf2_sha256$1000000$qfFgDBTm7JgZ3rjnD5Bah1$rEVTq/ErZUBaFwWx7B0oWSWGCvScVyzoSDgX2znQZxE=",
+        "last_login": null,
+        "is_superuser": false,
+        "username": "Javi",
+        "first_name": "",
+        "last_name": "Perez",
+        "email": "micorreo@gmail.com",
+        "is_staff": false,
+        "is_active": true,
+        "date_joined": "2026-05-30T14:10:00.052Z",
+        "groups": [],
+        "user_permissions": []
+    }
+},
+{
+    "model": "auth.user",
+    "fields": {
+        "password": "pbkdf2_sha256$1000000$Xn3S3Zt2o9bkTZrHT3ypSK$dTZ1TIBo8Akw8OsZ/lu6TjfC9UJHH/QNUauG/CuLWUI=",
+        "last_login": "2026-05-30T14:11:27.344Z",
+        "is_superuser": false,
+        "username": "ola",
+        "first_name": "",
+        "last_name": "ola",
+        "email": "ola@ola.ola",
+        "is_staff": false,
+        "is_active": true,
+        "date_joined": "2026-05-30T14:11:22.491Z",
+        "groups": [],
+        "user_permissions": []
+    }
+},
+{
+    "model": "catalogoMusicos.anuncio",
+    "pk": 1,
+    "fields": {
+        "titulo": "Buscamos guitarrista para banda de rock",
+        "descripcion": "Banda consolidada busca guitarrista con experiencia en rock progresivo.",
+        "pago": 500.5,
+        "fecha_creacion": "2024-01-01",
+        "usuario": [
+            "pedro_productor"
+        ],
+        "bandas": [
+            1
+        ]
+    }
+},
+{
+    "model": "catalogoMusicos.anuncio",
+    "pk": 2,
+    "fields": {
+        "titulo": "Músicos para grabación de EP",
+        "descripcion": "Necesitamos sesión de grabación para 5 canciones. Pago por sesión.",
+        "pago": 1200.0,
+        "fecha_creacion": "2024-01-05",
+        "usuario": [
+            "pedro_productor"
+        ],
+        "bandas": [
+            2,
+            3
+        ]
+    }
+},
+{
+    "model": "catalogoMusicos.anuncio",
+    "pk": 3,
+    "fields": {
+        "titulo": "Tecladista para tour nacional",
+        "descripcion": "Buscamos tecladista versátil para acompañar en tour de 2 meses.",
+        "pago": 2500.0,
+        "fecha_creacion": "2024-01-10",
+        "usuario": [
+            "pedro_productor"
+        ],
+        "bandas": [
+            1,
+            2
+        ]
+    }
+},
+{
+    "model": "catalogoMusicos.evento",
+    "pk": 1,
+    "fields": {
+        "titulo": "Festival de Rock 2024",
+        "descripcion": "Gran festival de rock con las mejores bandas de la región. Entrada gratuita.",
+        "fecha_evento": "2024-06-15T20:00:00Z",
+        "fecha_creacion": "2024-01-01T10:00:00Z",
+        "fecha_actualizacion": "2024-01-01T10:00:00Z",
+        "ubicacion": "Plaza Mayor, Centro de la ciudad",
+        "latitud": null,
+        "longitud": null,
+        "usuario": [
+            "admin"
+        ],
+        "bandas": [
+            1,
+            3
+        ]
+    }
+},
+{
+    "model": "catalogoMusicos.evento",
+    "pk": 2,
+    "fields": {
+        "titulo": "Concierto Jazz en vivo",
+        "descripcion": "Noche de jazz con los mejores músicos locales. Ambiente íntimo y exclusivo.",
+        "fecha_evento": "2024-05-20T21:00:00Z",
+        "fecha_creacion": "2024-01-05T10:00:00Z",
+        "fecha_actualizacion": "2026-05-30T14:09:08.666Z",
+        "ubicacion": "Gran Vía, 62, 4º Izquierda, Centro, 28013 Madrid, Spain",
+        "latitud": "40.422216",
+        "longitud": "-3.708448",
+        "usuario": [
+            "pedro_productor"
+        ],
+        "bandas": []
+    }
+},
+{
+    "model": "catalogoMusicos.evento",
+    "pk": 3,
+    "fields": {
+        "titulo": "Jam Session Semanal",
+        "descripcion": "Sesión de improvisación para músicos de todos los niveles.",
+        "fecha_evento": "2024-04-10T19:30:00Z",
+        "fecha_creacion": "2024-01-10T10:00:00Z",
+        "fecha_actualizacion": "2024-01-10T10:00:00Z",
+        "ubicacion": "Escuela de Música Local, Calle Música 45",
+        "latitud": null,
+        "longitud": null,
+        "usuario": [
+            "admin"
+        ],
+        "bandas": [
+            2
+        ]
+    }
+},
+{
+    "model": "catalogoMusicos.evento",
+    "pk": 4,
+    "fields": {
+        "titulo": "ola",
+        "descripcion": "ola",
+        "fecha_evento": "2026-05-30T16:12:00Z",
+        "fecha_creacion": "2026-05-30T14:13:31.845Z",
+        "fecha_actualizacion": "2026-05-30T14:13:31.845Z",
+        "ubicacion": "Univ. Pablo de Olavide, 41089 Dos Hermanas, Sevilla, Spain",
+        "latitud": "37.357703",
+        "longitud": "-5.939769",
+        "usuario": [
+            "ola"
+        ],
+        "bandas": [
+            4
+        ]
+    }
+},
+{
+    "model": "catalogoMusicos.musico",
+    "fields": {
+        "user_ptr": [
+            "carlos_guitarra"
+        ],
+        "instrumento": "Guitarra",
+        "bio": "Guitarrista experimentado con 10 años de trayectoria. Especializado en rock y blues.",
+        "fecha_inicio_estudio": "2014-05-15"
+    }
+},
+{
+    "model": "catalogoMusicos.musico",
+    "fields": {
+        "user_ptr": [
+            "maria_bateria"
+        ],
+        "instrumento": "Batería",
+        "bio": "Baterista apasionado por el rock y el metal. Ritmo y precisión son mi marca.",
+        "fecha_inicio_estudio": "2016-03-20"
+    }
+},
+{
+    "model": "catalogoMusicos.musico",
+    "fields": {
+        "user_ptr": [
+            "juan_bajo"
+        ],
+        "instrumento": "Bajo",
+        "bio": "Bajista con estilo funk y progresivo. 8 años de experiencia en varias bandas.",
+        "fecha_inicio_estudio": "2016-06-10"
+    }
+},
+{
+    "model": "catalogoMusicos.musico",
+    "fields": {
+        "user_ptr": [
+            "ana_teclados"
+        ],
+        "instrumento": "Teclados",
+        "bio": "Tecladista versatil. Manejo sintetizadores y piano con soltura. Jazz y fusión.",
+        "fecha_inicio_estudio": "2015-09-01"
+    }
+},
+{
+    "model": "catalogoMusicos.musico",
+    "fields": {
+        "user_ptr": [
+            "Javi"
+        ],
+        "instrumento": "Zambomba",
+        "bio": "Ola",
+        "fecha_inicio_estudio": "1945-01-01"
+    }
+},
+{
+    "model": "catalogoMusicos.musico",
+    "fields": {
+        "user_ptr": [
+            "ola"
+        ],
+        "instrumento": "ola",
+        "bio": "ola",
+        "fecha_inicio_estudio": "2020-01-01"
+    }
+},
+{
+    "model": "catalogoMusicos.reporte",
+    "pk": 1,
+    "fields": {
+        "titulo": "Error al cargar banda",
+        "descripcion_error": "La página de detalles de la banda no carga correctamente.",
+        "fecha_creacion": "2024-01-15T14:30:00Z",
+        "usuario": [
+            "carlos_guitarra"
+        ]
+    }
+},
+{
+    "model": "catalogoMusicos.reporte",
+    "pk": 2,
+    "fields": {
+        "titulo": "Problema con registro de músico",
+        "descripcion_error": "El formulario de registro rechaza direcciones de correo válidas.",
+        "fecha_creacion": "2024-01-16T09:15:00Z",
+        "usuario": [
+            "maria_bateria"
+        ]
+    }
+},
+{
+    "model": "catalogoMusicos.reporte",
+    "pk": 3,
+    "fields": {
+        "titulo": "Evento duplicado",
+        "descripcion_error": "El evento del 15 de junio aparece dos veces en el listado.",
+        "fecha_creacion": "2024-01-17T16:45:00Z",
+        "usuario": [
+            "ana_teclados"
+        ]
+    }
+},
+{
+    "model": "catalogoMusicos.banda",
+    "pk": 1,
+    "fields": {
+        "nombre": "Los Rockeros Clásicos",
+        "fecha_creacion": "2020-01-15",
+        "usuario": null,
+        "musicos": [
+            [
+                "carlos_guitarra"
+            ],
+            [
+                "maria_bateria"
+            ],
+            [
+                "juan_bajo"
+            ]
+        ]
+    }
+},
+{
+    "model": "catalogoMusicos.banda",
+    "pk": 2,
+    "fields": {
+        "nombre": "Jazz Cool Fusion",
+        "fecha_creacion": "2021-06-10",
+        "usuario": null,
+        "musicos": [
+            [
+                "carlos_guitarra"
+            ],
+            [
+                "ana_teclados"
+            ]
+        ]
+    }
+},
+{
+    "model": "catalogoMusicos.banda",
+    "pk": 3,
+    "fields": {
+        "nombre": "Metal Extreme",
+        "fecha_creacion": "2019-03-22",
+        "usuario": null,
+        "musicos": [
+            [
+                "maria_bateria"
+            ],
+            [
+                "juan_bajo"
+            ]
+        ]
+    }
+},
+{
+    "model": "catalogoMusicos.banda",
+    "pk": 4,
+    "fields": {
+        "nombre": "banda ola",
+        "fecha_creacion": "2026-12-16",
+        "usuario": [
+            "ola"
+        ],
+        "musicos": [
+            [
+                "carlos_guitarra"
+            ],
+            [
+                "maria_bateria"
+            ],
+            [
+                "juan_bajo"
+            ],
+            [
+                "ana_teclados"
+            ],
+            [
+                "Javi"
+            ],
+            [
+                "ola"
+            ]
+        ]
+    }
+}
+]

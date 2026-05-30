@@ -1,0 +1,61 @@
+name: it-prod
+services:
+  # ==========================================
+  # PROYECTO CATALOGOMUSICOS
+  # ==========================================
+  db-catalogomusicos:
+    image: postgres:18
+    restart: always
+    volumes:
+      - catalogomusicos_postgres_data:/var/lib/postgresql/data
+    env_file:
+      - .env
+    environment:
+      - POSTGRES_DB=${POSTGRES_DB_CATALOGOMUSICOS}
+      - POSTGRES_USER=${POSTGRES_USER_CATALOGOMUSICOS}
+      - POSTGRES_PASSWORD=${POSTGRES_PASSWORD_CATALOGOMUSICOS}
+      - PGDATA=/var/lib/postgresql/data/pgdata
+    # Comprueba si la BD acepta conexiones
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${POSTGRES_USER_CATALOGOMUSICOS} -d ${POSTGRES_DB_CATALOGOMUSICOS}"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+
+  web-catalogomusicos:
+    build: ./proyectoGrupo3
+    # Primero migra, si tiene éxito (&&), levanta Gunicorn
+    command: >
+      sh -c "python manage.py collectstatic --noinput &&
+      python manage.py migrate &&
+      gunicorn proyectoMusica.wsgi:application --bind 0.0.0.0:8000"
+    volumes:
+      - ./proyectoGrupo3:/app
+      - catalogomusicos_static_data:/app/staticfiles
+    env_file:
+      - .env
+    environment:
+      - DJANGO_SETTINGS_MODULE=settings.prod
+    depends_on:
+      db-catalogomusicos:
+        condition: service_healthy # No arranca hasta que db-catalogomusicos esté "sana"
+
+
+  # ==========================================
+  # BLOQUE 3: SERVIDOR WEB FRONT-END (NGINX)
+  # ==========================================
+  nginx:
+    image: nginx:alpine
+    restart: always
+    ports:
+      - "8000:8000"
+      - "8001:8001"
+    volumes:
+      - ./nginx/default.conf:/etc/nginx/conf.d/default.conf
+      - catalogomusicos_static_data:/staticfiles_catalogomusicos
+    depends_on:
+      - web-catalogomusicos
+
+volumes:
+  catalogomusicos_postgres_data:
+  catalogomusicos_static_data:
