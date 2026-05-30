@@ -3,7 +3,7 @@
 {% block titulo %}Mi Catalogo de Musicos - Anuncios{% endblock %}
 
 {% block contenido %}
-<h1>Mis Anuncios</h1>
+<h1>Anuncios</h1>
 
 {% if request.user.is_authenticated %}
 <p><a class="btn" href="{% url 'catalogoMusicos:crear_anuncio' %}">Crear Nuevo Anuncio</a></p>
@@ -13,7 +13,8 @@
     {% for anuncio in anuncios %}
     <article class="card">
         <h2 class="card-title">
-            <a href="{% url 'catalogoMusicos:detalle_anuncio' anuncio.id %}"> {{ anuncio.titulo }} - {{ anuncio.pago}} </a>
+            <a href="{% url 'catalogoMusicos:detalle_anuncio' anuncio.id %}"> {{ anuncio.titulo }} - {{ anuncio.pago}}
+            </a>
         </h2>
         <p>{{ anuncio.descripcion|truncatewords:30 }}</p>
         <p class="card-meta">Creado: {{ anuncio.fecha_creacion }}</p>

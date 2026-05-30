@@ -3,8 +3,8 @@
 {% block titulo %}Mi Catalogo de Musicos - Bandas{% endblock %}
 
 {% block contenido %}
-<h1>Mis Bandas</h1>
-{% if request.user.is_authenticated %}
+<h1>Bandas</h1>
+{% if puede_crear_banda %}
 <p><a class="btn" href="{% url 'catalogoMusicos:crear_banda' %}">Crear nueva banda</a></p>
 {% endif %}
 
