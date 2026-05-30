@@ -1,0 +1,23 @@
+{% extends "catalogoMusicos/base.html" %}
+
+{% block titulo %}Eliminar Reporte{% endblock %}
+
+{% block contenido %}
+<h1>Eliminar cuenta</h1>
+
+<p><strong>Advertencia:</strong> Estás a punto de eliminar la siguiente cuenta:</p>
+<h2>Nombre: {{ user.username }} {{ user.lastname }}</h2>
+<p><strong>Email:</strong> {{ user.email }}</p>
+<p class="fecha"><strong>Fecha de creacion:</strong> {{ user.date_joined }}</p>
+<p><strong>Esta acción no se puede deshacer.</strong></p>
+
+<form method="post">
+    {% csrf_token %}
+    <button type="submit">Confirmar eliminación</button>
+</form>
+
+<p>
+    <a href="{% url 'catalogoMusicos:detalle_user' user.id %}">Cancelar y volver a la cuenta</a> |
+    <a href="{% url 'catalogoMusicos:home' %}">Volver al inicio</a>
+</p>
+{% endblock %}
