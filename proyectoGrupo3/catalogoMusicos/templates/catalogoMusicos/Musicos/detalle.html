@@ -12,7 +12,7 @@
 <p class="fecha"><strong>Inicio de estudio:</strong> {{ musico.fecha_inicio_estudio }}</p>
 {% if request.user.is_authenticated and request.user.pk == musico.pk %}
 <p>
-    <a href="{% url 'catalogoMusicos:editar_musico' musico.id %}">Editar músico</a> |
+    <a href="{% url 'catalogoMusicos:editar_musico' musico.id %}">Editar mi perfil</a> |
     <a href="{% url 'catalogoMusicos:eliminar_musico' musico.id %}">Eliminar músico</a>
 </p>
 {% endif %}

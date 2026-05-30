@@ -350,8 +350,8 @@ def editar_reporte(request, id):
 def editar_musico(request, id):
     musico = get_object_or_404(Musico, id=id)
 
-    # Validar propiedad (Relación OneToOne)
-    if musico.usuario != request.user:
+    # Validar propiedad: comparar pks porque Musico hereda de User
+    if musico.pk != request.user.pk:
         raise PermissionDenied("No tienes permiso para editar este perfil de músico.")
 
     if request.method == "POST":
