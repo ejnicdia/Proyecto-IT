@@ -76,7 +76,18 @@ def listar_musicos(request):
 
 def listar_bandas(request):
     bandas = Banda.objects.all()
-    return render(request, "catalogoMusicos/bandas/lista.html", {"bandas": bandas})
+    puede_crear_banda = False
+    try:
+        if request.user.is_authenticated:
+            puede_crear_banda = Musico.objects.filter(pk=request.user.pk).exists()
+    except Exception:
+        puede_crear_banda = False
+
+    return render(
+        request,
+        "catalogoMusicos/bandas/lista.html",
+        {"bandas": bandas, "puede_crear_banda": puede_crear_banda},
+    )
 
 
 def listar_anuncios(request):
@@ -101,6 +112,7 @@ def listar_eventos(request):
 def detalle_musico(request, id):
     musico = get_object_or_404(Musico, id=id)
     return render(request, "catalogoMusicos/musicos/detalle.html", {"musico": musico})
+
 
 @login_required
 def crear_musico(request):
@@ -150,18 +162,20 @@ def eliminar_musico(request, id):
 
     return render(request, "catalogoMusicos/musicos/eliminar.html", {"musico": musico})
 
+
 @login_required
 def detalle_user(request, id):
     user = get_object_or_404(User, id=id)
 
     if user != request.user:
         raise PermissionDenied("No tienes permiso para ver este perfil.")
-    
+
     return render(
         request,
         "catalogoMusicos/user/detalle.html",
         {"user": user},
     )
+
 
 def detalle_banda(request, id):
     banda = get_object_or_404(Banda, id=id)
@@ -207,7 +221,9 @@ def crear_reporte(request):
             reporte.usuario = request.user
             reporte.save()
             form.save_m2m()  # Guardar la relación ManyToMany con bandas
-            messages.success(request, f'¡Reporte "{reporte.titulo}" creado exitosamente!')
+            messages.success(
+                request, f'¡Reporte "{reporte.titulo}" creado exitosamente!'
+            )
             return redirect("catalogoMusicos:listar_reportes")
     else:
         form = ReporteForm()
@@ -286,6 +302,10 @@ def crear_anuncio(request):
 
 @login_required
 def crear_banda(request):
+    # Solo los usuarios que existen como `Musico` pueden crear bandas
+    if not Musico.objects.filter(pk=request.user.pk).exists():
+        raise PermissionDenied("Solo los músicos pueden crear bandas.")
+
     banda = None
     if request.method == "POST":
         form = BandaForm(data=request.POST)
@@ -326,49 +346,46 @@ def editar_reporte(request, id):
     )
 
 
-
 @login_required
 def editar_musico(request, id):
     musico = get_object_or_404(Musico, id=id)
-    
+
     # Validar propiedad (Relación OneToOne)
     if musico.usuario != request.user:
         raise PermissionDenied("No tienes permiso para editar este perfil de músico.")
-        
-    if request.method == 'POST':
+
+    if request.method == "POST":
         form = MusicoForm(request.POST, instance=musico)
         if form.is_valid():
             form.save()
-            return redirect('detalle_musico', id=musico.id)
+            return redirect("detalle_musico", id=musico.id)
     else:
         form = MusicoForm(instance=musico)
-        
-    return render(request, 'catalogoMusicos/musicos/editar.html', {
-        'form': form,
-        'musico': musico
-    })
+
+    return render(
+        request, "catalogoMusicos/musicos/editar.html", {"form": form, "musico": musico}
+    )
+
 
 @login_required
 def editar_user(request, id):
     user = get_object_or_404(User, id=id)
-    
+
     # Validar propiedad (Relación OneToOne)
     if user != request.user:
         raise PermissionDenied("No tienes permiso para editar este perfil de músico.")
-        
-    if request.method == 'POST':
+
+    if request.method == "POST":
         form = FormularioRegistro(request.POST, instance=user)
         if form.is_valid():
             form.save()
-            return redirect('detalle_user', id=user.id)
+            return redirect("detalle_user", id=user.id)
     else:
         form = FormularioRegistro(instance=user)
-        
-    return render(request, 'catalogoMusicos/user/editar.html', {
-        'form': form,
-        'user': user
-    })
 
+    return render(
+        request, "catalogoMusicos/user/editar.html", {"form": form, "user": user}
+    )
 
 
 @login_required
@@ -410,7 +427,7 @@ def editar_anuncio(request, id):
         form = AnuncioForm(request.POST, instance=anuncio)
         if form.is_valid():
             form.save()
-            return redirect('catalogoMusicos:detalle_anuncio', id=anuncio.id)
+            return redirect("catalogoMusicos:detalle_anuncio", id=anuncio.id)
 
     else:
         form = AnuncioForm(instance=anuncio)
@@ -474,6 +491,7 @@ def eliminar_user(request, id):
         return redirect("catalogoMusicos:home")
 
     return render(request, "catalogoMusicos/user/eliminar.html", {"user": user})
+
 
 @login_required
 def eliminar_musico(request, id):

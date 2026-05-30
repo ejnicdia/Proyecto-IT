@@ -4,7 +4,7 @@
 
 {% block contenido %}
 <h1>Bandas</h1>
-{% if request.user.is_authenticated %}
+{% if puede_crear_banda %}
 <p><a class="btn" href="{% url 'catalogoMusicos:crear_banda' %}">Crear nueva banda</a></p>
 {% endif %}
 
