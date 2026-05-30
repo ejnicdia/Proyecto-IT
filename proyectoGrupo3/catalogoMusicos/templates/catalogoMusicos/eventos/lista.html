@@ -3,7 +3,7 @@
 {% block titulo %}Mi Catalogo de Musicos - Eventos{% endblock %}
 
 {% block contenido %}
-<h1>Mis Eventos</h1>
+<h1>Eventos</h1>
 
 {% if request.user.is_authenticated %}
 <p><a class="btn" href="{% url 'catalogoMusicos:crear_evento' %}">Crear Nuevo Evento</a></p>
