@@ -3,7 +3,9 @@
 {% block titulo %}Catalogo de Músicos{% endblock %}
 
 {% block contenido %}
-    <h1>Catalogo de Músicos</h1>
-    <p>Introducción a la app</p>
-    <p>Inicia sesión o date de alta para comenzar a ver los distintos eventos y anuncios.</p>
+    <h1>ITMusic</h1>
+    <h2>El Catalogo de Músicos número 1</h2>
+    <p>Con su gestión de eventos facil y sencilla y su gran portal, facilita la vida tanto al que ofrece el evento como al interesado.</p>
+    <p>También facilitamos a los musicos que ingresen a nuestra la app la posibilidad de darse a conocer y acceder a contratos y eventos que no sabían que existian.</p>
+    <p><a class="brand-link" href="{% url 'catalogoMusicos:login' %}">Inicia sesión</a> o <a class="brand-link" href="{% url 'catalogoMusicos:registro' %}">date de alta</a> para administrar tus propios eventos y anuncios o crea ya mismo tu <a class="brand-link" href="{% url 'catalogoMusicos:registro_musico' %}">cuenta de musico</a> y date a conocer.</p>
 {% endblock %}
